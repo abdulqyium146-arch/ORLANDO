@@ -25,8 +25,11 @@ export const SITE_CONFIG = {
   reviewCount: 56,
   url: "https://affordablelocksmithorlando.com",
   social: {
-    google: "https://g.co/kgs/affordable-locksmith-orlando",
+    google: "https://www.google.com/maps?cid=8420155941837107426",
   },
+  googlePlaceId: "0x88e777ebd8187e9f:0x74da67379a9870e2",
+  googleCid: "8420155941837107426",
+  googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14012!2d-81.4637!3d28.5677!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e777ebd8187e9f%3A0x74da67379a9870e2!2sAffordable+Locksmith+Orlando!5e0!3m2!1sen!2sus!4v1",
   licenseNumber: "FL-LIC-2024-LOCK",
   founded: "2015",
   serviceRadius: "30 miles",

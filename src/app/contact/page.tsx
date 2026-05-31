@@ -155,21 +155,30 @@ export default function ContactPage() {
       </section>
 
       {/* Map */}
-      <section className="h-64 bg-gray-200 relative" aria-label="Service area map">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="h-10 w-10 text-[#1e3a5f] mx-auto mb-2" aria-hidden="true" />
-            <p className="font-bold text-[#1e3a5f]">Orlando, FL Service Area</p>
-            <p className="text-gray-600 text-sm">Serving all of greater Orlando within 30 miles</p>
-            <a
-              href={`https://maps.google.com/?q=${encodeURIComponent(SITE_CONFIG.address.full)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2563eb] text-sm hover:underline mt-1 inline-block"
-            >
-              Open in Google Maps
-            </a>
+      <section aria-label="Business location map">
+        <iframe
+          src={SITE_CONFIG.googleMapsEmbed}
+          width="100%"
+          height="400"
+          style={{ border: 0, display: "block" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title={`${SITE_CONFIG.name} — Google Maps`}
+        />
+        <div className="bg-[#1e3a5f] py-3 px-4 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-white">
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-[#f59e0b]" aria-hidden="true" />
+            <span>{SITE_CONFIG.address.full}</span>
           </div>
+          <a
+            href={SITE_CONFIG.social.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-[#f59e0b] hover:underline font-semibold"
+          >
+            View on Google Maps →
+          </a>
         </div>
       </section>
 
