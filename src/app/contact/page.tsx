@@ -157,9 +157,9 @@ export default function ContactPage() {
       {/* Map */}
       <section aria-label="Business location map">
         <iframe
-          src={SITE_CONFIG.googleMapsEmbed}
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.564982386056!2d-81.49288428926452!3d28.612824475574087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e777ebd8187e9f%3A0x74da67379a9870e2!2sAffordable%20Locksmith%20Orlando!5e0!3m2!1sen!2s!4v1780207016083!5m2!1sen!2s"
           width="100%"
-          height="400"
+          height="450"
           style={{ border: 0, display: "block" }}
           allowFullScreen
           loading="lazy"
