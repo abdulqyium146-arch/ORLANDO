@@ -360,8 +360,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── CITY × SERVICE MATRIX ─── */}
+      <section className="py-12 px-4 bg-gray-50" aria-labelledby="city-service-heading">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 id="city-service-heading" className="text-2xl md:text-3xl font-bold text-[#1e3a5f] mb-2">
+              Locksmith Services by City
+            </h2>
+            <p className="text-gray-600 text-sm max-w-xl mx-auto">
+              Find specific locksmith services in your city — fast response, upfront pricing, 24/7 availability.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
+            {SERVICE_AREAS.map((area) => (
+              <div key={area.slug}>
+                <Link
+                  href={`/locations/${area.slug}`}
+                  className="block text-[#1e3a5f] font-bold text-sm mb-2 hover:underline"
+                >
+                  {area.name}, FL
+                </Link>
+                <ul className="space-y-1">
+                  {SERVICES.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        href={`/locations/${area.slug}/${service.slug}`}
+                        className="block text-gray-500 hover:text-[#1e3a5f] text-xs leading-snug transition-colors"
+                      >
+                        {service.shortName}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── FAQ ─── */}
-      <section className="py-16 px-4 bg-gray-50" aria-labelledby="faq-heading">
+      <section className="py-16 px-4" aria-labelledby="faq-heading">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 id="faq-heading" className="text-3xl font-bold text-[#1e3a5f] mb-3">

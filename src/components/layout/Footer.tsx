@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, KeyRound, Star } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, KeyRound, Star, ExternalLink } from "lucide-react";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS } from "@/lib/config";
 
 export default function Footer() {
@@ -25,25 +27,29 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Footer */}
+      {/* Main Footer — 4 columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10">
+            <Link href="/" className="flex items-center gap-2 mb-4 group" aria-label="Affordable Locksmith Orlando — Home">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
                 <KeyRound className="h-6 w-6 text-[#f59e0b]" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-bold text-base">Affordable Locksmith</div>
                 <div className="text-[#f59e0b] text-sm">Orlando, FL</div>
               </div>
-            </div>
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Orlando&apos;s most trusted locksmith. Licensed, insured, and available 24/7 for all your lock and key needs.
+              Orlando&apos;s most trusted locksmith. Licensed, insured, and available 24/7 for all your lock and key needs across the greater Orlando metro area.
             </p>
             {/* Rating */}
-            <div className="flex items-center gap-2 mb-4">
+            <Link
+              href="/reviews"
+              className="flex items-center gap-2 mb-4 hover:text-[#f59e0b] transition-colors group"
+              aria-label={`${SITE_CONFIG.rating} star rating — read our ${SITE_CONFIG.reviewCount}+ reviews`}
+            >
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
@@ -53,10 +59,10 @@ export default function Footer() {
                   />
                 ))}
               </div>
-              <span className="text-sm text-gray-300">
+              <span className="text-sm text-gray-300 group-hover:text-[#f59e0b]">
                 {SITE_CONFIG.rating} ({SITE_CONFIG.reviewCount}+ reviews)
               </span>
-            </div>
+            </Link>
             {/* Contact */}
             <div className="space-y-2 text-sm">
               <a
@@ -82,30 +88,56 @@ export default function Footer() {
                 24/7 Emergency Service
               </div>
             </div>
+            {/* Trust badges */}
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
+                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
+                <span className="text-sm text-gray-200">Licensed &amp; Insured — FL-LIC-2024-LOCK</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
+                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
+                <span className="text-sm text-gray-200">Background Checked Technicians</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
+                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
+                <span className="text-sm text-gray-200">Upfront Pricing — No Hidden Fees</span>
+              </div>
+            </div>
           </div>
 
           {/* Services Column */}
           <div>
-            <h3 className="font-bold text-base mb-4 text-white">Our Services</h3>
+            <h3 className="font-bold text-base mb-4 text-white">
+              <Link href="/services" className="hover:text-[#f59e0b] transition-colors">
+                Our Services →
+              </Link>
+            </h3>
             <ul className="space-y-2">
               {SERVICES.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="text-gray-300 hover:text-[#f59e0b] text-sm transition-colors"
+                    className="text-gray-300 hover:text-[#f59e0b] text-sm transition-colors flex items-center justify-between group"
                   >
-                    {service.name}
+                    <span>{service.name}</span>
+                    {service.popular && (
+                      <span className="text-xs text-[#f59e0b]/70 group-hover:text-[#f59e0b]">Popular</span>
+                    )}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Locations Column */}
+          {/* Locations Column — ALL 12 */}
           <div>
-            <h3 className="font-bold text-base mb-4 text-white">Service Areas</h3>
+            <h3 className="font-bold text-base mb-4 text-white">
+              <Link href="/locations" className="hover:text-[#f59e0b] transition-colors">
+                Service Areas →
+              </Link>
+            </h3>
             <ul className="space-y-2">
-              {SERVICE_AREAS.slice(0, 8).map((area) => (
+              {SERVICE_AREAS.map((area) => (
                 <li key={area.slug}>
                   <Link
                     href={`/locations/${area.slug}`}
@@ -118,7 +150,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links + Trust */}
+          {/* Quick Links */}
           <div>
             <h3 className="font-bold text-base mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2 mb-6">
@@ -140,21 +172,85 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            {/* Trust badges */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
-                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
-                <span className="text-sm text-gray-200">Licensed & Insured</span>
+            {/* Google Business Profile link */}
+            <a
+              href={SITE_CONFIG.social.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-gray-300 hover:text-[#f59e0b] text-sm transition-colors mb-4"
+            >
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              Google Business Profile
+            </a>
+          </div>
+        </div>
+
+        {/* ── Mega Sitemap: City × Service Link Matrix ── */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <h2 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
+            Locksmith Services by City — Complete Coverage
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+            {SERVICE_AREAS.map((area) => (
+              <div key={area.slug}>
+                <Link
+                  href={`/locations/${area.slug}`}
+                  className="block text-[#f59e0b] font-semibold text-sm mb-2 hover:text-white transition-colors"
+                >
+                  {area.name}, FL
+                </Link>
+                <ul className="space-y-1">
+                  {SERVICES.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        href={`/locations/${area.slug}/${service.slug}`}
+                        className="block text-gray-400 hover:text-gray-200 text-xs leading-snug transition-colors"
+                      >
+                        {service.shortName}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
-                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
-                <span className="text-sm text-gray-200">Background Checked</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-2">
-                <span className="text-[#f59e0b] font-bold text-sm">✓</span>
-                <span className="text-sm text-gray-200">Upfront Pricing</span>
-              </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── All Service Pages ── */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <h3 className="text-xs font-bold text-white/60 uppercase tracking-widest mb-3">All Service Pages</h3>
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+            <Link href="/services" className="text-gray-400 hover:text-gray-200 text-xs transition-colors">
+              All Services
+            </Link>
+            {SERVICES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="text-gray-400 hover:text-gray-200 text-xs transition-colors"
+              >
+                {s.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── All Location Hub Pages ── */}
+        <div className="mt-4 pt-4 border-t border-white/10">
+          <h3 className="text-xs font-bold text-white/60 uppercase tracking-widest mb-3">All Location Pages</h3>
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+            <Link href="/locations" className="text-gray-400 hover:text-gray-200 text-xs transition-colors">
+              All Locations
+            </Link>
+            {SERVICE_AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                href={`/locations/${area.slug}`}
+                className="text-gray-400 hover:text-gray-200 text-xs transition-colors"
+              >
+                {area.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -163,18 +259,18 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-400">
           <p>
-            © {currentYear} {SITE_CONFIG.name}. All rights reserved. License #{SITE_CONFIG.licenseNumber}
+            © {currentYear}{" "}
+            <Link href="/" className="hover:text-gray-200 transition-colors">
+              {SITE_CONFIG.name}
+            </Link>
+            . All rights reserved. License #{SITE_CONFIG.licenseNumber}
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/privacy-policy" className="hover:text-gray-200 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-gray-200 transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/sitemap.xml" className="hover:text-gray-200 transition-colors">
-              Sitemap
-            </Link>
+            <Link href="/" className="hover:text-gray-200 transition-colors">Home</Link>
+            <Link href="/reviews" className="hover:text-gray-200 transition-colors">Reviews</Link>
+            <Link href="/faq" className="hover:text-gray-200 transition-colors">FAQ</Link>
+            <Link href="/contact" className="hover:text-gray-200 transition-colors">Contact</Link>
+            <Link href="/sitemap.xml" className="hover:text-gray-200 transition-colors">Sitemap</Link>
           </div>
         </div>
       </div>

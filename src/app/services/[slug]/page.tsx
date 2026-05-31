@@ -509,21 +509,28 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <p className="text-gray-400 text-xs">{SITE_CONFIG.phone}</p>
                 </div>
 
-                {/* Service Areas */}
+                {/* Service Areas — all 12 with direct city×service links */}
                 <div className="bg-white border border-gray-200 rounded-2xl p-5">
-                  <h3 className="font-bold text-[#1e3a5f] mb-3">Service Areas</h3>
-                  <div className="space-y-2">
-                    {SERVICE_AREAS.slice(0, 6).map((area) => (
+                  <h3 className="font-bold text-[#1e3a5f] mb-1">{service.name} Near You</h3>
+                  <p className="text-xs text-gray-500 mb-3">Select your city for local pricing &amp; info</p>
+                  <div className="space-y-1.5">
+                    {SERVICE_AREAS.map((area) => (
                       <Link
                         key={area.slug}
-                        href={`/locations/${area.slug}`}
-                        className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#1e3a5f] transition-colors"
+                        href={`/locations/${area.slug}/${slug}`}
+                        className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#1e3a5f] hover:font-medium transition-colors"
                       >
-                        <MapPin className="h-3.5 w-3.5 text-[#f59e0b]" aria-hidden="true" />
-                        {area.name}
+                        <MapPin className="h-3.5 w-3.5 text-[#f59e0b] shrink-0" aria-hidden="true" />
+                        {service.shortName} in {area.name}
                       </Link>
                     ))}
                   </div>
+                  <Link
+                    href="/locations"
+                    className="block mt-3 text-xs text-[#1e3a5f] font-semibold hover:underline"
+                  >
+                    View all service areas →
+                  </Link>
                 </div>
 
                 {/* Related Services */}
@@ -570,6 +577,54 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="py-10 px-4">
         <div className="max-w-7xl mx-auto">
           <TrustBadges variant="compact" />
+        </div>
+      </section>
+
+      {/* ── City Coverage Grid — internal linking ── */}
+      <section className="py-12 px-4 bg-gray-50" aria-labelledby="service-cities-heading">
+        <div className="max-w-7xl mx-auto">
+          <h2 id="service-cities-heading" className="text-xl font-bold text-[#1e3a5f] mb-2">
+            {service.name} Available Across the Orlando Metro
+          </h2>
+          <p className="text-gray-600 text-sm mb-6">
+            We provide {service.name.toLowerCase()} in Orlando and every surrounding city within 30 miles.
+            Click your city for local service details, pricing, and availability.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {SERVICE_AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                href={`/locations/${area.slug}/${slug}`}
+                className="bg-white border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:border-[#1e3a5f] hover:text-[#1e3a5f] hover:shadow-sm transition-all text-center"
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/services" className="text-sm text-[#1e3a5f] font-semibold hover:underline">← All Services</Link>
+            <Link href="/locations" className="text-sm text-[#1e3a5f] font-semibold hover:underline">All Service Areas →</Link>
+            <Link href="/contact" className="text-sm text-[#1e3a5f] font-semibold hover:underline">Contact Us →</Link>
+            <Link href="/faq" className="text-sm text-[#1e3a5f] font-semibold hover:underline">FAQ →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Other services */}
+      <section className="py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-lg font-bold text-[#1e3a5f] mb-4">Other Locksmith Services in Orlando</h2>
+          <div className="flex flex-wrap gap-2">
+            {SERVICES.filter((s) => s.slug !== slug).map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="bg-gray-100 hover:bg-[#1e3a5f] hover:text-white text-gray-700 text-sm px-3 py-1.5 rounded-lg transition-colors"
+              >
+                {s.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

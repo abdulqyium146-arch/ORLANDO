@@ -173,23 +173,23 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* Services Available */}
+      {/* Services Available — all 10 with city×service links */}
       <section className="py-14 px-4" aria-labelledby="local-services-heading">
         <div className="max-w-7xl mx-auto">
           <h2 id="local-services-heading" className="text-2xl font-bold text-[#1e3a5f] mb-2 text-center">
             Locksmith Services in {area.name}, FL
           </h2>
           <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
-            All of our locksmith services are available to {area.name} customers at the same fast
-            response times and honest pricing.
+            All locksmith services are available in {area.name} with fast 20–30 minute response
+            times and upfront pricing.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SERVICES.slice(0, 9).map((service) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {SERVICES.map((service) => {
               const Icon = SERVICE_ICONS[service.icon] || KeyRound;
               return (
                 <Link
                   key={service.slug}
-                  href={`/services/${service.slug}`}
+                  href={`/locations/${slug}/${service.slug}`}
                   className="group flex items-start gap-3 bg-white border border-gray-200 rounded-xl p-4 hover:border-[#1e3a5f] hover:shadow-sm transition-all"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#1e3a5f]/10 group-hover:bg-[#1e3a5f] shrink-0 transition-colors">
@@ -197,7 +197,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 text-sm group-hover:text-[#1e3a5f]">
-                      {service.name}
+                      {service.name} in {area.name}
                     </h3>
                     <p className="text-gray-500 text-xs mt-0.5">{service.price}</p>
                   </div>
@@ -270,20 +270,45 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* Nearby Areas */}
-      <section className="py-10 px-4 bg-gray-50" aria-labelledby="nearby-heading">
-        <div className="max-w-4xl mx-auto">
+      {/* All Services — quick links */}
+      <section className="py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-lg font-bold text-[#1e3a5f] mb-3">All Services — {area.name}</h2>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {SERVICES.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/locations/${slug}/${s.slug}`}
+                className="bg-gray-100 hover:bg-[#1e3a5f] hover:text-white text-gray-700 text-sm px-3 py-1.5 rounded-lg transition-colors"
+              >
+                {s.name}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-sm">
+            <Link href="/services" className="text-[#1e3a5f] font-semibold hover:underline">All Services →</Link>
+            <Link href="/locations" className="text-[#1e3a5f] font-semibold hover:underline">All Locations →</Link>
+            <Link href="/faq" className="text-[#1e3a5f] font-semibold hover:underline">FAQ →</Link>
+            <Link href="/contact" className="text-[#1e3a5f] font-semibold hover:underline">Contact →</Link>
+            <Link href="/reviews" className="text-[#1e3a5f] font-semibold hover:underline">Reviews →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Nearby Cities */}
+      <section className="py-8 px-4 bg-gray-50" aria-labelledby="nearby-heading">
+        <div className="max-w-7xl mx-auto">
           <h2 id="nearby-heading" className="font-bold text-[#1e3a5f] mb-3">
-            Also Serving Nearby Areas
+            Also Serving Nearby Cities
           </h2>
           <div className="flex flex-wrap gap-2">
             {SERVICE_AREAS.filter((a) => a.slug !== slug).map((a) => (
               <Link
                 key={a.slug}
                 href={`/locations/${a.slug}`}
-                className="text-sm text-gray-600 hover:text-[#1e3a5f] border border-gray-200 hover:border-[#1e3a5f] rounded-full px-3 py-1 transition-all"
+                className="text-sm text-gray-600 hover:text-[#1e3a5f] border border-gray-200 hover:border-[#1e3a5f] rounded-lg px-3 py-1.5 transition-all"
               >
-                {a.name}
+                {a.name}, FL
               </Link>
             ))}
           </div>
