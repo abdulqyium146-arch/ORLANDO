@@ -6,7 +6,7 @@ import {
   KeyRound, AlertTriangle, Home, Building2, Car, RefreshCw,
 } from "lucide-react";
 import { SERVICE_AREAS, SITE_CONFIG, SERVICES, REVIEWS } from "@/lib/config";
-import { generateLocationSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { generateLocationSchema, generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/schema";
 import TrustBadges from "@/components/shared/TrustBadges";
 import ReviewCard from "@/components/shared/ReviewCard";
 import CTASection from "@/components/shared/CTASection";
@@ -51,17 +51,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const area = SERVICE_AREAS.find((a) => a.slug === slug);
   if (!area) return { title: "Location Not Found" };
 
+  const pageUrl = `${SITE_CONFIG.url}/locations/${slug}`;
+  const title = `Locksmith ${area.name} FL | 24/7 Emergency Locksmith`;
+  const description = `Professional locksmith services in ${area.name}, FL. Emergency lockouts, lock rekeying, car keys & more. Available 24/7. Fast 20–30 min response. Call ${SITE_CONFIG.phone}`;
+
   return {
-    title: `Locksmith ${area.name} FL — 24/7 Emergency Service`,
-    description: `Professional locksmith services in ${area.name}, FL. Emergency lockouts, lock rekeying, car keys & more. Available 24/7. Fast 20–30 min response. Call ${SITE_CONFIG.phone}`,
-    alternates: { canonical: `${SITE_CONFIG.url}/locations/${slug}` },
+    title,
+    description,
+    alternates: { canonical: pageUrl },
     keywords: [
       `locksmith ${area.name}`,
       `locksmith ${area.name} FL`,
       `emergency locksmith ${area.name}`,
       `${area.name} locksmith`,
       `locksmith near me ${area.name}`,
+      `24 hour locksmith ${area.name}`,
     ],
+    openGraph: {
+      type: "website",
+      url: pageUrl,
+      title: `${title} | ${SITE_CONFIG.name}`,
+      description,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `Locksmith ${area.name} FL` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${SITE_CONFIG.name}`,
+      description,
+      images: ["/og-image.jpg"],
+    },
   };
 }
 
@@ -71,19 +89,27 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   if (!area) notFound();
 
   const content = getLocationContent(area.name);
+  const pageUrl = `${SITE_CONFIG.url}/locations/${slug}`;
   const locationSchema = generateLocationSchema(area.name, slug);
   const faqSchema = generateFAQSchema(content.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: SITE_CONFIG.url },
     { name: "Locations", url: `${SITE_CONFIG.url}/locations` },
-    { name: area.name, url: `${SITE_CONFIG.url}/locations/${slug}` },
+    { name: `${area.name}, FL`, url: pageUrl },
   ]);
+  const webPageSchema = generateWebPageSchema({
+    name: `Locksmith ${area.name} FL — 24/7 Emergency Locksmith`,
+    description: content.intro,
+    url: pageUrl,
+    type: "WebPage",
+  });
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       {/* Hero */}
       <section className="hero-gradient text-white py-14 px-4">

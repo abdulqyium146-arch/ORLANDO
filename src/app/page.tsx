@@ -18,7 +18,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS, REVIEWS, FAQ_GENERAL } from "@/lib/config";
-import { generateFAQSchema } from "@/lib/schema";
+import { generateFAQSchema, generateHowToSchema, generateWebPageSchema } from "@/lib/schema";
 import TrustBadges from "@/components/shared/TrustBadges";
 import ReviewCard from "@/components/shared/ReviewCard";
 import CTASection from "@/components/shared/CTASection";
@@ -28,6 +28,13 @@ export const metadata: Metadata = {
   title: "24/7 Emergency Locksmith Orlando FL | Affordable Locksmith Orlando",
   description: `Affordable Locksmith Orlando — Licensed & insured. Fast 20–30 min response. Emergency lockouts, residential, commercial & automotive locksmith services 24/7. Call ${SITE_CONFIG.phone}`,
   alternates: { canonical: SITE_CONFIG.url },
+  openGraph: {
+    type: "website",
+    url: SITE_CONFIG.url,
+    title: "24/7 Emergency Locksmith Orlando FL | Affordable Locksmith Orlando",
+    description: `Affordable Locksmith Orlando — Licensed & insured. Fast 20–30 min response. Emergency lockouts, residential, commercial & automotive locksmith services 24/7. Call ${SITE_CONFIG.phone}`,
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Affordable Locksmith Orlando" }],
+  },
 };
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
@@ -68,13 +75,19 @@ const PROCESS_STEPS = [
 
 export default function HomePage() {
   const faqSchema = generateFAQSchema(FAQ_GENERAL.slice(0, 5).map((f) => ({ q: f.q, a: f.a })));
+  const howToSchema = generateHowToSchema();
+  const webPageSchema = generateWebPageSchema({
+    name: "24/7 Emergency Locksmith Orlando FL | Affordable Locksmith Orlando",
+    description: `Affordable Locksmith Orlando — Licensed & insured. Fast 20–30 min response. Emergency lockouts, residential, commercial & automotive locksmith services 24/7.`,
+    url: SITE_CONFIG.url,
+    type: "WebPage",
+  });
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       {/* ─── HERO ─── */}
       <section className="hero-gradient text-white relative overflow-hidden" aria-label="Hero">

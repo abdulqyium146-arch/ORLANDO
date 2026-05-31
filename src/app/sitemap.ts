@@ -2,31 +2,51 @@ import type { MetadataRoute } from "next";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS } from "@/lib/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = SITE_CONFIG.url;
+  const base = SITE_CONFIG.url;
   const now = new Date();
+  const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const lastMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
+  /* ── Static core pages ── */
   const staticPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${baseUrl}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/locations`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/reviews`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: base,                        lastModified: now,       changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${base}/services`,          lastModified: lastWeek,  changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${base}/locations`,         lastModified: lastWeek,  changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${base}/faq`,               lastModified: lastMonth, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/reviews`,           lastModified: lastWeek,  changeFrequency: "weekly",  priority: 0.7 },
+    { url: `${base}/contact`,           lastModified: lastMonth, changeFrequency: "monthly", priority: 0.8 },
   ];
 
-  const servicePages: MetadataRoute.Sitemap = SERVICES.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
-    lastModified: now,
+  /* ── Service pages ── */
+  const servicePages: MetadataRoute.Sitemap = SERVICES.map((s) => ({
+    url: `${base}/services/${s.slug}`,
+    lastModified: lastMonth,
     changeFrequency: "monthly" as const,
-    priority: service.popular ? 0.9 : 0.8,
+    priority: s.popular ? 0.95 : 0.85,
   }));
 
+  /* ── Location hub pages ── */
   const locationPages: MetadataRoute.Sitemap = SERVICE_AREAS.map((area, i) => ({
-    url: `${baseUrl}/locations/${area.slug}`,
-    lastModified: now,
+    url: `${base}/locations/${area.slug}`,
+    lastModified: lastMonth,
     changeFrequency: "monthly" as const,
-    priority: i === 0 ? 0.9 : 0.7,
+    priority: i === 0 ? 0.9 : 0.75,
   }));
 
-  return [...staticPages, ...servicePages, ...locationPages];
+  /* ── City × Service pages (programmatic local SEO) ── */
+  const cityServicePages: MetadataRoute.Sitemap = SERVICE_AREAS.flatMap((area) =>
+    SERVICES.map((service) => ({
+      url: `${base}/locations/${area.slug}/${service.slug}`,
+      lastModified: lastMonth,
+      changeFrequency: "monthly" as const,
+      priority: (area.slug === "orlando" || service.popular) ? 0.8 : 0.65,
+    }))
+  );
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...locationPages,
+    ...cityServicePages,
+  ];
 }

@@ -18,7 +18,7 @@ import {
   Shield,
 } from "lucide-react";
 import { SERVICES, SITE_CONFIG, REVIEWS, SERVICE_AREAS, FAQ_GENERAL } from "@/lib/config";
-import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/schema";
 import TrustBadges from "@/components/shared/TrustBadges";
 import ReviewCard from "@/components/shared/ReviewCard";
 import CTASection from "@/components/shared/CTASection";
@@ -281,16 +281,34 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) return { title: "Service Not Found" };
 
+  const pageUrl = `${SITE_CONFIG.url}/services/${slug}`;
+  const title = `${service.name} Orlando FL | 24/7 Licensed Locksmith`;
+  const description = `Professional ${service.name.toLowerCase()} in Orlando, FL. ${service.description} Available 24/7. Call ${SITE_CONFIG.phone}`;
+
   return {
-    title: `${service.name} Orlando FL — ${SITE_CONFIG.name}`,
-    description: `Professional ${service.name.toLowerCase()} in Orlando, FL. ${service.description} Available 24/7. Call ${SITE_CONFIG.phone}`,
-    alternates: { canonical: `${SITE_CONFIG.url}/services/${slug}` },
+    title,
+    description,
+    alternates: { canonical: pageUrl },
     keywords: [
       `${service.name.toLowerCase()} Orlando`,
       `${service.name.toLowerCase()} Orlando FL`,
       `Orlando ${service.name.toLowerCase()}`,
+      `${service.name.toLowerCase()} near me`,
       "locksmith Orlando",
     ],
+    openGraph: {
+      type: "website",
+      url: pageUrl,
+      title: `${title} | ${SITE_CONFIG.name}`,
+      description,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${service.name} Orlando FL` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${SITE_CONFIG.name}`,
+      description,
+      images: ["/og-image.jpg"],
+    },
   };
 }
 
@@ -302,10 +320,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const content = SERVICE_CONTENT[slug];
   const Icon = SERVICE_ICONS[service.icon] || KeyRound;
 
+  const pageUrl = `${SITE_CONFIG.url}/services/${slug}`;
   const serviceSchema = generateServiceSchema({
     name: service.name,
     description: service.heroDescription,
-    url: `${SITE_CONFIG.url}/services/${slug}`,
+    url: pageUrl,
     price: service.price,
   });
 
@@ -314,14 +333,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: SITE_CONFIG.url },
     { name: "Services", url: `${SITE_CONFIG.url}/services` },
-    { name: service.name, url: `${SITE_CONFIG.url}/services/${slug}` },
+    { name: service.name, url: pageUrl },
   ]);
+
+  const webPageSchema = generateWebPageSchema({
+    name: `${service.name} Orlando FL`,
+    description: service.heroDescription,
+    url: pageUrl,
+    type: "ServicePage",
+  });
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       {/* Hero */}
       <section className="hero-gradient text-white py-14 px-4">

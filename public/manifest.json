@@ -1,0 +1,30 @@
+{
+  "name": "Affordable Locksmith Orlando",
+  "short_name": "Locksmith Orlando",
+  "description": "24/7 Emergency Locksmith in Orlando, FL. Licensed & insured. Fast 20-30 min response.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e3a5f",
+  "theme_color": "#1e3a5f",
+  "lang": "en-US",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Now",
+      "short_name": "Call",
+      "description": "Call Affordable Locksmith Orlando",
+      "url": "/contact",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Emergency Locksmith",
+      "short_name": "Emergency",
+      "description": "Emergency lockout service",
+      "url": "/services/emergency-locksmith",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
