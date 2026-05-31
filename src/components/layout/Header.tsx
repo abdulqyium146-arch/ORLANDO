@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Phone, Menu, X, ChevronDown, KeyRound, MapPin, Wrench } from "lucide-react";
+import Image from "next/image";
+import { Phone, Menu, X, ChevronDown, MapPin, Wrench } from "lucide-react";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS } from "@/lib/config";
 
 export default function Header() {
@@ -23,9 +24,14 @@ export default function Header() {
             className="flex items-center gap-2 shrink-0"
             aria-label="Affordable Locksmith Orlando — Home"
           >
-            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#1e3a5f]">
-              <KeyRound className="h-5 w-5 text-[#f59e0b]" aria-hidden="true" />
-            </div>
+            <Image
+              src="/android-chrome-192x192.png"
+              alt="Affordable Locksmith Orlando logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+              priority
+            />
             <div className="hidden sm:block leading-tight">
               <div className="text-[#1e3a5f] font-bold text-base">Affordable Locksmith</div>
               <div className="text-[#f59e0b] text-xs font-semibold">Orlando, FL</div>

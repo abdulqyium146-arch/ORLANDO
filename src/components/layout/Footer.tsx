@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, KeyRound, Star, ExternalLink, BadgeCheck } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Star, ExternalLink, BadgeCheck } from "lucide-react";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS, AUTHOR } from "@/lib/config";
 
 export default function Footer() {
@@ -33,13 +33,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4 group" aria-label="Affordable Locksmith Orlando — Home">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
-                <KeyRound className="h-6 w-6 text-[#f59e0b]" aria-hidden="true" />
-              </div>
+            <Link href="/" className="flex items-center gap-3 mb-4 group" aria-label="Affordable Locksmith Orlando — Home">
+              <Image
+                src="/android-chrome-192x192.png"
+                alt="Affordable Locksmith Orlando logo"
+                width={44}
+                height={44}
+                className="rounded-full shrink-0"
+              />
               <div>
-                <div className="font-bold text-base">Affordable Locksmith</div>
-                <div className="text-[#f59e0b] text-sm">Orlando, FL</div>
+                <div className="font-bold text-base text-white">Affordable Locksmith</div>
+                <div className="text-[#f59e0b] text-sm font-semibold">Orlando, FL</div>
               </div>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">

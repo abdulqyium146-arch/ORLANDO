@@ -50,7 +50,7 @@ export function generateOrganizationSchema() {
     url: BASE,
     logo: {
       "@type": "ImageObject",
-      url: `${BASE}/logo.png`,
+      url: `${BASE}/logo.webp`,
       width: 200,
       height: 60,
     },
@@ -136,7 +136,7 @@ export function generateLocalBusinessSchema() {
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     image: `${BASE}/og-image.jpg`,
-    logo: `${BASE}/logo.png`,
+    logo: `${BASE}/logo.webp`,
     description:
       "Licensed and insured locksmith in Orlando, FL. 24/7 emergency locksmith services with 20–30 minute response times. Residential, commercial, and automotive locksmith serving Orlando and surrounding areas.",
     address: {

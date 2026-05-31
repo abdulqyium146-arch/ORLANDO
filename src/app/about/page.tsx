@@ -143,6 +143,17 @@ export default function AboutPage() {
       {/* Full Bio */}
       <section className="py-16 px-4" aria-labelledby="bio-heading">
         <div className="max-w-4xl mx-auto">
+          {/* Full-color logo — white background section */}
+          <div className="mb-8">
+            <Image
+              src="/logo.webp"
+              alt="Affordable Locksmith Orlando — Fast. Affordable. Trusted."
+              width={320}
+              height={160}
+              className="h-auto w-56 sm:w-72 object-contain"
+              style={{ objectPosition: "top left" }}
+            />
+          </div>
           <h2 id="bio-heading" className="text-2xl font-bold text-[#1e3a5f] mb-6">
             About {AUTHOR.name}
           </h2>
