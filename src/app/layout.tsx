@@ -73,6 +73,9 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: { canonical: SITE_CONFIG.url },
+  verification: {
+    google: "fd9kURQSurl6Cd7LXeHocOK65S3qVW4T9dRXTL4Asmk",
+  },
   other: {
     "geo.region": "US-FL",
     "geo.placename": "Orlando, Florida",
