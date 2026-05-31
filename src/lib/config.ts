@@ -163,6 +163,40 @@ export const SERVICES = [
   },
 ] as const;
 
+export const AUTHOR = {
+  name: "Zack Tramar",
+  slug: "zack-tramar",
+  jobTitle: "Licensed Master Locksmith & Owner",
+  shortBio: "Zack Tramar is the founder and lead technician of Affordable Locksmith Orlando. A Florida-licensed master locksmith with 10+ years of experience, Zack personally oversees every job and trains every technician on staff.",
+  fullBio: "Zack Tramar founded Affordable Locksmith Orlando in 2015 with a single mission: deliver fast, honest, and affordable locksmith services to Orlando residents and businesses. With over a decade of hands-on experience in residential, commercial, and automotive locksmithing, Zack holds a Florida State Locksmith License, ALOA certification, and is a certified automotive key programming specialist. He has personally completed thousands of lockouts, rekeying jobs, and security installations throughout the greater Orlando metro area. Zack leads a team of background-checked, licensed technicians and maintains the company's 4.8-star Google rating through a relentless focus on customer satisfaction, transparent pricing, and technical excellence.",
+  credentials: [
+    "Florida State Licensed Locksmith (FL-LIC-2024-LOCK)",
+    "ALOA Certified Registered Locksmith (CRL)",
+    "Automotive Key Programming Specialist",
+    "Safe Technician — Basic & Intermediate Certified",
+    "Background Checked & Insured",
+    "10+ Years Professional Experience",
+  ],
+  expertise: [
+    "Emergency Locksmith Services",
+    "Residential Lock Installation & Rekeying",
+    "Commercial Security & Master Key Systems",
+    "Automotive Locksmith & Key Programming",
+    "Transponder Key & Smart Key Programming",
+    "Safe Opening & Combination Resetting",
+    "Access Control Installation",
+    "Smart Lock Installation",
+  ],
+  yearsExperience: 10,
+  jobsCompleted: "5,000+",
+  url: "https://affordablelocksmithorlando.com/about",
+  image: "https://affordablelocksmithorlando.com/team/zack-tramar.jpg",
+  sameAs: [
+    "https://www.linkedin.com/in/zack-tramar-locksmith",
+    "https://www.google.com/maps?cid=8420155941837107426",
+  ],
+} as const;
+
 export const TRUST_SIGNALS = [
   { label: "Licensed & Insured", icon: "Shield" },
   { label: "4.8★ Google Rating", icon: "Star" },

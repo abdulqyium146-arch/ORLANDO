@@ -94,6 +94,7 @@ export default function Header() {
 
             <Link href="/reviews" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#1e3a5f] transition-colors rounded-md hover:bg-gray-50">Reviews</Link>
             <Link href="/faq" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#1e3a5f] transition-colors rounded-md hover:bg-gray-50">FAQ</Link>
+            <Link href="/about" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#1e3a5f] transition-colors rounded-md hover:bg-gray-50">About</Link>
             <Link href="/contact" className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#1e3a5f] transition-colors rounded-md hover:bg-gray-50">Contact</Link>
           </nav>
 
@@ -184,6 +185,7 @@ export default function Header() {
 
             <Link href="/reviews" onClick={close} className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:bg-[#1e3a5f] hover:text-white rounded-md transition-colors">⭐ Reviews</Link>
             <Link href="/faq" onClick={close} className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:bg-[#1e3a5f] hover:text-white rounded-md transition-colors">❓ FAQ</Link>
+            <Link href="/about" onClick={close} className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:bg-[#1e3a5f] hover:text-white rounded-md transition-colors">👤 About</Link>
             <Link href="/contact" onClick={close} className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:bg-[#1e3a5f] hover:text-white rounded-md transition-colors">📞 Contact</Link>
           </nav>
         </div>

@@ -1,10 +1,44 @@
-import { SITE_CONFIG, REVIEWS, SERVICES, SERVICE_AREAS } from "./config";
+import { SITE_CONFIG, REVIEWS, SERVICES, SERVICE_AREAS, AUTHOR } from "./config";
 
 /* ─── Core entity identifiers ─── */
 const BASE = SITE_CONFIG.url;
 const BIZ_ID = `${BASE}/#business`;
 const ORG_ID = `${BASE}/#organization`;
 const WEB_ID = `${BASE}/#website`;
+const AUTHOR_ID = `${BASE}/#author`;
+
+/* ─── 0. Person — Author / Expert (E-E-A-T) ─── */
+export function generatePersonSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": AUTHOR_ID,
+    name: AUTHOR.name,
+    jobTitle: AUTHOR.jobTitle,
+    description: AUTHOR.shortBio,
+    url: AUTHOR.url,
+    image: {
+      "@type": "ImageObject",
+      url: AUTHOR.image,
+      width: 400,
+      height: 400,
+    },
+    worksFor: { "@id": ORG_ID },
+    hasCredential: AUTHOR.credentials.map((c) => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: c,
+    })),
+    knowsAbout: AUTHOR.expertise,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Orlando",
+      addressRegion: "FL",
+      addressCountry: "US",
+    },
+    sameAs: AUTHOR.sameAs,
+  };
+}
 
 /* ─── 1. Organization ─── */
 export function generateOrganizationSchema() {
@@ -55,6 +89,8 @@ export function generateOrganizationSchema() {
       `https://www.angi.com/companylist/us/fl/orlando/locksmiths.htm`,
     ],
     foundingDate: SITE_CONFIG.founded,
+    founder: { "@id": AUTHOR_ID },
+    employee: [{ "@id": AUTHOR_ID }],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE_CONFIG.address.street,
@@ -220,6 +256,7 @@ export function generateWebPageSchema({
     description,
     isPartOf: { "@id": WEB_ID },
     about: { "@id": BIZ_ID },
+    author: { "@id": AUTHOR_ID },
     inLanguage: "en-US",
     dateModified: new Date().toISOString().split("T")[0],
     ...(breadcrumb ? { breadcrumb } : {}),
@@ -304,7 +341,7 @@ export function generateFAQSchema(faqs: { q: string; a: string }[]) {
       acceptedAnswer: {
         "@type": "Answer",
         text: faq.a,
-        author: { "@id": BIZ_ID },
+        author: { "@id": AUTHOR_ID },
         dateModified: new Date().toISOString().split("T")[0],
       },
     })),

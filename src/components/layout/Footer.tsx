@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, KeyRound, Star, ExternalLink } from "lucide-react";
-import { SITE_CONFIG, SERVICES, SERVICE_AREAS } from "@/lib/config";
+import { Phone, Mail, MapPin, Clock, KeyRound, Star, ExternalLink, BadgeCheck } from "lucide-react";
+import { SITE_CONFIG, SERVICES, SERVICE_AREAS, AUTHOR } from "@/lib/config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -160,6 +160,7 @@ export default function Footer() {
                 { label: "Service Areas", href: "/locations" },
                 { label: "Customer Reviews", href: "/reviews" },
                 { label: "FAQ", href: "/faq" },
+                { label: `About ${AUTHOR.name}`, href: "/about" },
                 { label: "Contact Us", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
@@ -255,6 +256,38 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* ── Author / E-E-A-T Credit ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="border-t border-white/10 pt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-white/5 rounded-2xl px-5 py-4">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#f59e0b]/20 shrink-0">
+              <KeyRound className="h-6 w-6 text-[#f59e0b]" aria-hidden="true" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-gray-400 mb-0.5">Content written &amp; reviewed by</p>
+              <Link href="/about" className="font-bold text-white hover:text-[#f59e0b] transition-colors">
+                {AUTHOR.name}
+              </Link>
+              <span className="text-gray-400 text-sm"> — {AUTHOR.jobTitle}</span>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {AUTHOR.credentials.slice(0, 3).map((cred) => (
+                  <span key={cred} className="inline-flex items-center gap-1 text-xs text-gray-400 bg-white/5 px-2 py-0.5 rounded-full">
+                    <BadgeCheck className="h-3 w-3 text-[#16a34a]" aria-hidden="true" />
+                    {cred}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <Link
+              href="/about"
+              className="text-xs text-[#f59e0b] hover:underline font-semibold shrink-0"
+            >
+              View Bio →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-400">
@@ -269,6 +302,7 @@ export default function Footer() {
             <Link href="/" className="hover:text-gray-200 transition-colors">Home</Link>
             <Link href="/reviews" className="hover:text-gray-200 transition-colors">Reviews</Link>
             <Link href="/faq" className="hover:text-gray-200 transition-colors">FAQ</Link>
+            <Link href="/about" className="hover:text-gray-200 transition-colors">About</Link>
             <Link href="/contact" className="hover:text-gray-200 transition-colors">Contact</Link>
             <Link href="/sitemap.xml" className="hover:text-gray-200 transition-colors">Sitemap</Link>
           </div>

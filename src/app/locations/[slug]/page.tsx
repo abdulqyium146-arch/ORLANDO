@@ -11,6 +11,7 @@ import TrustBadges from "@/components/shared/TrustBadges";
 import ReviewCard from "@/components/shared/ReviewCard";
 import CTASection from "@/components/shared/CTASection";
 import ContactForm from "@/components/shared/ContactForm";
+import AuthorBio from "@/components/shared/AuthorBio";
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
   AlertTriangle, Home, Building2, Car, KeyRound, Cpu: KeyRound,
@@ -292,6 +293,13 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             <Link href="/contact" className="text-[#1e3a5f] font-semibold hover:underline">Contact →</Link>
             <Link href="/reviews" className="text-[#1e3a5f] font-semibold hover:underline">Reviews →</Link>
           </div>
+        </div>
+      </section>
+
+      {/* Author Bio — E-E-A-T */}
+      <section className="py-6 px-4">
+        <div className="max-w-4xl mx-auto">
+          <AuthorBio />
         </div>
       </section>
 

@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/faq`,               lastModified: lastMonth, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/reviews`,           lastModified: lastWeek,  changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/contact`,           lastModified: lastMonth, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/about`,             lastModified: lastMonth, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   /* ── Service pages ── */

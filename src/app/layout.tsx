@@ -10,8 +10,9 @@ import {
   generateLocalBusinessSchema,
   generateOrganizationSchema,
   generateWebSiteSchema,
+  generatePersonSchema,
 } from "@/lib/schema";
-import { SITE_CONFIG } from "@/lib/config";
+import { SITE_CONFIG, AUTHOR } from "@/lib/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
     "lock rekeying Orlando",
     "car key programming Orlando",
   ],
-  authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
-  creator: SITE_CONFIG.name,
+  authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
+  creator: AUTHOR.name,
   publisher: SITE_CONFIG.name,
   category: "Locksmith Services",
   robots: {
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     generateOrganizationSchema(),
     generateWebSiteSchema(),
     generateLocalBusinessSchema(),
+    generatePersonSchema(),
   ];
 
   return (
