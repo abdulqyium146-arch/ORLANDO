@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { BadgeCheck, Wrench } from "lucide-react";
+import Image from "next/image";
+import { BadgeCheck } from "lucide-react";
 import { AUTHOR } from "@/lib/config";
 
 interface AuthorBioProps {
@@ -10,8 +11,14 @@ export default function AuthorBio({ compact = false }: AuthorBioProps) {
   if (compact) {
     return (
       <div className="flex items-center gap-3 py-3 border-t border-gray-200 mt-4">
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1e3a5f] shrink-0">
-          <Wrench className="h-5 w-5 text-[#f59e0b]" aria-hidden="true" />
+        <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 bg-[#1e3a5f]">
+          <Image
+            src="/professional-locksmith-orlando.webp"
+            alt={AUTHOR.name}
+            fill
+            className="object-cover object-top"
+            sizes="40px"
+          />
         </div>
         <div>
           <p className="text-sm font-semibold text-gray-900">
@@ -32,8 +39,14 @@ export default function AuthorBio({ compact = false }: AuthorBioProps) {
       aria-label={`About the author: ${AUTHOR.name}`}
     >
       <div className="flex items-start gap-4">
-        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#1e3a5f] shrink-0">
-          <Wrench className="h-8 w-8 text-[#f59e0b]" aria-hidden="true" />
+        <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 bg-[#1e3a5f]">
+          <Image
+            src="/professional-locksmith-orlando.webp"
+            alt={AUTHOR.name}
+            fill
+            className="object-cover object-top"
+            sizes="64px"
+          />
         </div>
         <div>
           <p className="text-xs font-bold text-[#f59e0b] uppercase tracking-wider mb-1">

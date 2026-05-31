@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Clock,
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     url: SITE_CONFIG.url,
     title: "24/7 Emergency Locksmith Orlando FL | Affordable Locksmith Orlando",
     description: `Affordable Locksmith Orlando — Licensed & insured. Fast 20–30 min response. Emergency lockouts, residential, commercial & automotive locksmith services 24/7. Call ${SITE_CONFIG.phone}`,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Affordable Locksmith Orlando" }],
+    images: [{ url: "/professional-locksmith-orlando.webp", width: 800, height: 600, alt: "Affordable Locksmith Orlando — Licensed Locksmith" }],
   },
 };
 
@@ -91,10 +92,16 @@ export default function HomePage() {
 
       {/* ─── HERO ─── */}
       <section className="hero-gradient text-white relative overflow-hidden" aria-label="Hero">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5" aria-hidden="true">
-          <div className="absolute top-10 right-10 w-64 h-64 border border-white rounded-full" />
-          <div className="absolute bottom-10 left-10 w-48 h-48 border border-white rounded-full" />
+        {/* Real photo background — subtle overlay */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+          <Image
+            src="/professional-locksmith-orlando.webp"
+            alt=""
+            fill
+            className="object-cover object-center"
+            quality={40}
+            priority
+          />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -470,24 +477,33 @@ export default function HomePage() {
               <CTASection variant="minimal" />
             </div>
 
-            {/* Stats Panel */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: "Years in Business", value: `${new Date().getFullYear() - parseInt(SITE_CONFIG.founded)}+` },
-                { label: "Customers Served", value: "5,000+" },
-                { label: "Google Rating", value: `${SITE_CONFIG.rating}★` },
-                { label: "Avg Response Time", value: "~25 min" },
-                { label: "5-Star Reviews", value: `${SITE_CONFIG.reviewCount}+` },
-                { label: "Service Coverage", value: "30 miles" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-[#1e3a5f] text-white rounded-xl p-5 text-center"
-                >
-                  <div className="text-3xl font-bold text-[#f59e0b] mb-1">{stat.value}</div>
-                  <div className="text-gray-300 text-sm">{stat.label}</div>
+            {/* Photo + Stats */}
+            <div className="space-y-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                <Image
+                  src="/locksmith-door-lock-orlando.webp"
+                  alt="Affordable Locksmith Orlando technician installing door lock"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={85}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f]/80 to-transparent p-4">
+                  <p className="text-white text-sm font-semibold">Professional lock installation — Orlando, FL</p>
                 </div>
-              ))}
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { label: "Years Experience", value: `${new Date().getFullYear() - parseInt(SITE_CONFIG.founded)}+` },
+                  { label: "Jobs Completed", value: "5,000+" },
+                  { label: "Google Rating", value: `${SITE_CONFIG.rating}★` },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-[#1e3a5f] text-white rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-[#f59e0b] mb-0.5">{stat.value}</div>
+                    <div className="text-gray-300 text-xs">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

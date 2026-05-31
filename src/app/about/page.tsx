@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ChevronRight,
   BadgeCheck,
@@ -74,6 +75,23 @@ export default function AboutPage() {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* Real photo */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] order-last lg:order-first">
+              <Image
+                src="/professional-locksmith-orlando.webp"
+                alt={`${AUTHOR.name} — ${AUTHOR.jobTitle} at Affordable Locksmith Orlando`}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
+                priority
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f] to-transparent p-5">
+                <p className="text-white font-bold text-lg">{AUTHOR.name}</p>
+                <p className="text-[#f59e0b] text-sm">{AUTHOR.jobTitle}</p>
+              </div>
+            </div>
+
             <div>
               <span className="inline-block text-[#f59e0b] font-bold text-sm uppercase tracking-wider mb-3">
                 Meet the Owner

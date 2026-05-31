@@ -69,11 +69,11 @@ export const metadata: Metadata = {
     description: `Licensed & insured locksmith in Orlando, FL. 24/7 emergency service, 20–30 min response. Call ${SITE_CONFIG.phone}`,
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_CONFIG.name} — Fast, Reliable, Affordable Locksmith in Orlando FL`,
-        type: "image/jpeg",
+        url: "/professional-locksmith-orlando.webp",
+        width: 800,
+        height: 600,
+        alt: `${SITE_CONFIG.name} — Licensed Locksmith in Orlando FL`,
+        type: "image/webp",
       },
     ],
   },
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `24/7 Locksmith Orlando | ${SITE_CONFIG.name}`,
     description: `Licensed locksmith in Orlando, FL. 24/7 emergency service. Call ${SITE_CONFIG.phone}`,
-    images: ["/og-image.jpg"],
+    images: ["/professional-locksmith-orlando.webp"],
   },
   alternates: { canonical: SITE_CONFIG.url },
   verification: {

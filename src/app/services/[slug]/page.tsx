@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Clock,
@@ -493,6 +494,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {/* Sidebar */}
               <aside className="space-y-6">
+                {/* Service Photo */}
+                <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
+                  <Image
+                    src="/locksmith-door-lock-orlando.webp"
+                    alt={`${service.name} in Orlando FL — Affordable Locksmith Orlando`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    quality={85}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1e3a5f]/80 to-transparent p-3">
+                    <p className="text-white text-xs font-semibold">{service.name} — Orlando, FL</p>
+                  </div>
+                </div>
+
                 {/* Call Box */}
                 <div className="bg-[#1e3a5f] text-white rounded-2xl p-6 text-center sticky top-20">
                   <Clock className="h-10 w-10 text-[#f59e0b] mx-auto mb-3" aria-hidden="true" />

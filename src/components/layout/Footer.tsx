@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, KeyRound, Star, ExternalLink, BadgeCheck } from "lucide-react";
 import { SITE_CONFIG, SERVICES, SERVICE_AREAS, AUTHOR } from "@/lib/config";
 
@@ -260,8 +261,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="border-t border-white/10 pt-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-white/5 rounded-2xl px-5 py-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#f59e0b]/20 shrink-0">
-              <KeyRound className="h-6 w-6 text-[#f59e0b]" aria-hidden="true" />
+            <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#1e3a5f]">
+              <Image
+                src="/professional-locksmith-orlando.webp"
+                alt={AUTHOR.name}
+                fill
+                className="object-cover object-top"
+                sizes="48px"
+              />
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-400 mb-0.5">Content written &amp; reviewed by</p>
