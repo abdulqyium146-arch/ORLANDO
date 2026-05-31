@@ -87,11 +87,29 @@ export const metadata: Metadata = {
   verification: {
     google: "fd9kURQSurl6Cd7LXeHocOK65S3qVW4T9dRXTL4Asmk",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico",        sizes: "any" },
+      { url: "/favicon-16x16.png",  sizes: "16x16",  type: "image/png" },
+      { url: "/favicon-32x32.png",  sizes: "32x32",  type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "mask-icon", url: "/favicon.ico", color: "#1e3a5f" },
+    ],
+  },
+  manifest: "/manifest.json",
   other: {
     "geo.region": "US-FL",
     "geo.placename": "Orlando, Florida",
     "geo.position": `${SITE_CONFIG.geo.lat};${SITE_CONFIG.geo.lng}`,
     ICBM: `${SITE_CONFIG.geo.lat}, ${SITE_CONFIG.geo.lng}`,
+    "msapplication-TileColor": "#1e3a5f",
+    "msapplication-TileImage": "/android-chrome-192x192.png",
+    "msapplication-config": "none",
   },
 };
 
@@ -123,11 +141,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <meta name="theme-color" content="#1e3a5f" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Locksmith Orlando" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="format-detection" content="telephone=yes" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* favicon link tags are handled by metadata.icons above */}
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <EmergencyBanner />
