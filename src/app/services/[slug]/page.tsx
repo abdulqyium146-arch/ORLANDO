@@ -103,10 +103,9 @@ const SERVICE_CONTENT: Record<string, {
     ],
     faqs: [
       { q: "What is a master key system?", a: "A master key system allows one key (the master key) to open multiple locks while individual keys open only specific locks. Ideal for businesses with multiple entry points and staff access levels." },
-      { q: "Do you install access control systems?", a: "Yes. We install keypad, card reader, fob, and biometric access control systems for offices, warehouses, and multi-unit properties." },
       { q: "Can you help with a commercial lockout after hours?", a: "Yes. We provide 24/7 commercial emergency locksmith service throughout Orlando with the same fast response times." },
     ],
-    relatedServices: ["lock-installation", "lock-rekeying", "emergency-locksmith"],
+    relatedServices: ["access-control-systems", "lock-installation", "emergency-locksmith"],
     costInfo: "Commercial locksmith services start at $75. Master key systems, access control, and large-scale installations are priced per project.",
     timeInfo: "Same-day service available. Complex commercial installations may require scheduling a specific appointment.",
   },
@@ -271,6 +270,56 @@ const SERVICE_CONTENT: Record<string, {
     relatedServices: ["lock-rekeying", "residential-locksmith", "commercial-locksmith"],
     costInfo: "Lock installation starts at $55 (labor only). Hardware costs vary by brand and grade. Full deadbolt installed: typically $85–$200.",
     timeInfo: "Same-day service available. Single lock installation takes 20–45 minutes.",
+  },
+  "access-control-systems": {
+    benefits: [
+      "Single-door to enterprise multi-building systems designed for Orlando businesses",
+      "Keypad, proximity card, smart card, biometric, and mobile credential options",
+      "Cloud-based platforms (Brivo, Openpath) — manage access from any device",
+      "Integration with CCTV cameras, intrusion alarms, and fire panels",
+      "Eliminate rekeying costs — revoke access credentials digitally in seconds",
+      "Free on-site security assessment before any proposal",
+    ],
+    process: [
+      { step: "1", title: "Free On-Site Assessment", desc: "We visit your property, identify all access points, and assess your current security posture." },
+      { step: "2", title: "Custom System Design", desc: "We design a system matched to your building layout, industry requirements, and budget." },
+      { step: "3", title: "Professional Installation", desc: "Certified technicians install hardware to commercial standards with minimal business disruption." },
+      { step: "4", title: "Training & Remote Setup", desc: "We train your staff on the system and configure remote management access." },
+    ],
+    faqs: [
+      { q: "How much does access control installation cost in Orlando?", a: "Single-door keypad entry starts at $400 installed. Card reader systems for 1–3 doors: $800–$2,500. Cloud-based multi-door: $1,500–$8,000+. Free on-site assessment included." },
+      { q: "What brands of access control do you install?", a: "HID Global, Genetec, Brivo, Openpath, Honeywell Pro-Watch, and Bosch. We also service most existing systems." },
+      { q: "Can access control integrate with cameras and alarms?", a: "Yes. Modern IP-based systems integrate with CCTV, intrusion alarms, and fire panels. A forced door event triggers camera recording and phone alerts." },
+      { q: "Can we manage employee access remotely?", a: "Yes. Cloud platforms like Brivo and Openpath let you grant/revoke access and view logs from any browser or app — no on-site server required." },
+    ],
+    relatedServices: ["commercial-locksmith", "fire-alarm-monitoring", "lock-installation"],
+    costInfo: "Single-door keypad entry starts at $400 installed. Card reader systems: $800–$2,500. Cloud-based multi-door: $1,500–$8,000+. Free on-site assessment.",
+    timeInfo: "Single-door systems installed same day or next day. Multi-door systems typically 1–3 business days.",
+  },
+  "fire-alarm-monitoring": {
+    benefits: [
+      "24/7 UL Listed central station monitoring — fire department notified within seconds",
+      "IP and cellular dual-path monitoring for maximum reliability",
+      "NFPA 72 and Florida Building Code compliant installation",
+      "Commercial fire alarm panels: Honeywell, Bosch, Notifier, Edwards",
+      "Permit management and fire marshal inspection coordination included",
+      "Monitoring certificate provided for insurance premium documentation",
+    ],
+    process: [
+      { step: "1", title: "Site Assessment & Code Review", desc: "We review your building type, occupancy, and Florida fire code requirements." },
+      { step: "2", title: "System Design & Permit", desc: "We design an NFPA 72 compliant system, pull permits, and schedule inspections." },
+      { step: "3", title: "Installation & Testing", desc: "Licensed technicians install detectors, pull stations, control panel, and monitoring communicator." },
+      { step: "4", title: "Central Station Activation", desc: "System enrolled with UL Listed monitoring center. Certificate of monitoring provided." },
+    ],
+    faqs: [
+      { q: "What is fire alarm remote monitoring?", a: "Fire alarm remote monitoring connects your system via IP or cellular to a 24/7 UL Listed central station. When any device activates, the monitoring center notifies the fire department and your keyholders. Required under NFPA 72 and Florida Statute 633." },
+      { q: "Is fire alarm monitoring required for Orlando businesses?", a: "Yes. Florida Building Code Chapter 9 and NFPA 72 require monitored systems for most commercial buildings. Orange County Fire Rescue enforces compliance during annual inspections." },
+      { q: "How much does fire alarm monitoring cost in Orlando?", a: "Commercial monitoring costs $25–$60/month. Installation costs vary by building size. We provide itemized quotes with no hidden fees." },
+      { q: "What is dual-path monitoring?", a: "Dual-path uses both IP and cellular simultaneously. If internet fails, cellular transmits the signal. Required by some insurance carriers for high-value properties." },
+    ],
+    relatedServices: ["commercial-locksmith", "access-control-systems", "lock-installation"],
+    costInfo: "Monitoring from $25/month. Installation varies by system size. Free site assessment and itemized quote included.",
+    timeInfo: "Small commercial systems (1–5 zones) installed within 3–5 business days after permits approved.",
   },
 };
 

@@ -5,7 +5,7 @@ import {
   Phone, Clock, MapPin, ChevronRight, CheckCircle, Star,
   KeyRound, AlertTriangle, Home, Building2, Car, RefreshCw,
 } from "lucide-react";
-import { SERVICE_AREAS, SITE_CONFIG, SERVICES, REVIEWS } from "@/lib/config";
+import { SERVICE_AREAS, SITE_CONFIG, SERVICES, REVIEWS, LOCATION_CONTENT } from "@/lib/config";
 import { generateLocationSchema, generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/schema";
 import TrustBadges from "@/components/shared/TrustBadges";
 import ReviewCard from "@/components/shared/ReviewCard";
@@ -18,7 +18,9 @@ const SERVICE_ICONS: Record<string, React.ElementType> = {
   RefreshCw, Wrench: KeyRound, Shield: AlertTriangle, PlusSquare: KeyRound,
 };
 
-function getLocationContent(name: string) {
+function getLocationContent(name: string, slug: string) {
+  const override = LOCATION_CONTENT[slug];
+  if (override) return override;
   return {
     intro: `Affordable Locksmith Orlando proudly serves ${name}, FL and surrounding neighborhoods. Our certified locksmiths provide fast, professional, and affordable locksmith services to ${name} residents, businesses, and drivers — 24 hours a day, 7 days a week.`,
     neighborhoods: `Whether you're in the heart of ${name} or an outlying neighborhood, our mobile locksmith units provide rapid response throughout the area. We typically arrive within 20–30 minutes.`,
@@ -53,8 +55,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!area) return { title: "Location Not Found" };
 
   const pageUrl = `${SITE_CONFIG.url}/locations/${slug}`;
-  const title = `Locksmith ${area.name} FL | 24/7 Emergency Locksmith`;
-  const description = `Professional locksmith services in ${area.name}, FL. Emergency lockouts, lock rekeying, car keys & more. Available 24/7. Fast 20–30 min response. Call ${SITE_CONFIG.phone}`;
+  const isLakeMary = slug === "lake-mary";
+
+  const title = isLakeMary
+    ? `Locksmith Lake Mary FL | Seminole County 24/7 Emergency`
+    : `Locksmith ${area.name} FL | 24/7 Emergency Locksmith`;
+
+  const description = isLakeMary
+    ? `Professional locksmith in Lake Mary, FL (Seminole County). Serving Heathrow, Colonial TownPark & Timacuan. Emergency lockouts, rekeying & car keys. Call ${SITE_CONFIG.phone}`
+    : `Professional locksmith services in ${area.name}, FL. Emergency lockouts, lock rekeying, car keys & more. Available 24/7. Fast 20–30 min response. Call ${SITE_CONFIG.phone}`;
 
   return {
     title,
@@ -67,6 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       `${area.name} locksmith`,
       `locksmith near me ${area.name}`,
       `24 hour locksmith ${area.name}`,
+      ...(isLakeMary ? ["locksmith seminole county", "heathrow locksmith", "lake mary fl locksmith"] : []),
     ],
     openGraph: {
       type: "website",
@@ -89,7 +99,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const area = SERVICE_AREAS.find((a) => a.slug === slug);
   if (!area) notFound();
 
-  const content = getLocationContent(area.name);
+  const content = getLocationContent(area.name, slug);
   const pageUrl = `${SITE_CONFIG.url}/locations/${slug}`;
   const locationSchema = generateLocationSchema(area.name, slug);
   const faqSchema = generateFAQSchema(content.faqs);

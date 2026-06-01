@@ -438,6 +438,79 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── PRICE TRANSPARENCY ─── */}
+      <section className="py-16 px-4 bg-gray-50" aria-labelledby="pricing-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block text-[#f59e0b] font-bold text-sm uppercase tracking-wider mb-2">
+              Transparent Pricing
+            </span>
+            <h2 id="pricing-heading" className="text-3xl md:text-4xl font-bold text-[#1e3a5f] mb-3">
+              Affordable Locksmith Prices — No Hidden Fees
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We quote you the price <strong>before</strong> any work begins. No surprise service call fees, no bait-and-switch. Here&apos;s what most customers pay:
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white border border-gray-200 rounded-2xl overflow-hidden text-sm">
+              <thead>
+                <tr className="bg-[#1e3a5f] text-white">
+                  <th className="text-left px-5 py-4 font-semibold">Service</th>
+                  <th className="text-center px-5 py-4 font-semibold">Our Price</th>
+                  <th className="text-center px-5 py-4 font-semibold hidden sm:table-cell">Dealership / Retail</th>
+                  <th className="text-center px-5 py-4 font-semibold">Response</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {[
+                  { service: "Emergency Lockout", href: "/services/emergency-locksmith", price: "From $45", alt: "$75–$150", time: "20–30 min" },
+                  { service: "Lock Rekeying (per lock)", href: "/services/lock-rekeying", price: "From $25", alt: "$50–$80", time: "Same day" },
+                  { service: "Deadbolt Installation", href: "/services/lock-installation", price: "From $55", alt: "$100–$200", time: "Same day" },
+                  { service: "Car Key Programming", href: "/services/car-key-programming", price: "From $85", alt: "$200–$500+", time: "Same day" },
+                  { service: "Car Key Replacement", href: "/services/car-key-replacement", price: "From $95", alt: "$250–$500+", time: "Same day" },
+                  { service: "Safe Opening", href: "/services/safe-opening", price: "From $150", alt: "$300–$600", time: "Same day" },
+                ].map((row) => (
+                  <tr key={row.service} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-5 py-3.5 text-gray-800 font-medium">
+                      <Link href={row.href} className="hover:text-[#1e3a5f] hover:underline">{row.service}</Link>
+                    </td>
+                    <td className="px-5 py-3.5 text-center font-bold text-[#16a34a]">{row.price}</td>
+                    <td className="px-5 py-3.5 text-center text-gray-400 hidden sm:table-cell">{row.alt}</td>
+                    <td className="px-5 py-3.5 text-center text-gray-600">{row.time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 grid sm:grid-cols-3 gap-4 text-center">
+            {[
+              { icon: "💰", title: "Upfront Quotes", desc: "Price confirmed before any work begins — always." },
+              { icon: "🚫", title: "No Hidden Fees", desc: "No surprise service call fees or after-hours surcharges." },
+              { icon: "💳", title: "All Payments Accepted", desc: "Cash, credit card, Apple Pay, Google Pay." },
+            ].map((item) => (
+              <div key={item.title} className="bg-white border border-gray-200 rounded-xl p-5">
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <h3 className="font-bold text-[#1e3a5f] mb-1">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-[#1e3a5f] font-bold px-8 py-4 rounded-xl text-lg transition-all hover:shadow-lg"
+            >
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              Get a Free Quote — {SITE_CONFIG.phone}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ─── ABOUT / EEAT ─── */}
       <section className="py-16 px-4" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto">

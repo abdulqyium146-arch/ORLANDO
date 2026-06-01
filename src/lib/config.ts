@@ -161,6 +161,28 @@ export const SERVICES = [
     responseTime: "Same day",
     popular: false,
   },
+  {
+    slug: "access-control-systems",
+    name: "Access Control Systems",
+    shortName: "Access Control",
+    icon: "Shield",
+    description: "Keypad, card reader, biometric, and cloud-based access control installation and programming for businesses.",
+    heroDescription: "Secure your business with professionally installed access control systems. From single-door keypad entry to multi-building cloud-based systems with remote management — we design, install, and service access control for Orlando offices, warehouses, retail, and healthcare facilities.",
+    price: "Starting at $400",
+    responseTime: "Scheduled",
+    popular: false,
+  },
+  {
+    slug: "fire-alarm-monitoring",
+    name: "Fire Alarm Monitoring",
+    shortName: "Fire Alarm",
+    icon: "AlertTriangle",
+    description: "24/7 UL Listed fire alarm remote monitoring and installation for commercial and residential properties in Orlando.",
+    heroDescription: "Protect your property and meet Florida fire code compliance with professional fire alarm installation and 24/7 remote monitoring. Our UL Listed central station monitoring ensures the fire department is notified within seconds of any alarm activation — day or night.",
+    price: "From $25/mo",
+    responseTime: "24/7 monitoring",
+    popular: false,
+  },
 ] as const;
 
 export const AUTHOR = {
@@ -303,3 +325,98 @@ export const FAQ_GENERAL = [
     a: "We accept cash, all major credit cards (Visa, MasterCard, American Express, Discover), and digital payments including Apple Pay and Google Pay.",
   },
 ] as const;
+
+export const LOCATION_CONTENT: Partial<Record<string, {
+  intro: string;
+  neighborhoods: string;
+  faqs: { q: string; a: string }[];
+}>> = {
+  "lake-mary": {
+    intro: `Affordable Locksmith Orlando serves Lake Mary, FL (ZIP 32746) — one of Seminole County's fastest-growing communities. From the Heathrow business corridor to Colonial TownPark and Timacuan's upscale residential neighborhoods, our certified locksmiths provide fast, professional service to Lake Mary residents and businesses 24 hours a day, 7 days a week.`,
+    neighborhoods: `We serve all Lake Mary areas including Heathrow, Timacuan, Magnolia Plantation, Colonial TownPark, the Lake Mary Tech Corridor along I-4, and surrounding Seminole County neighborhoods. Our mobile units are positioned throughout the area for rapid 20–30 minute response.`,
+    faqs: [
+      {
+        q: "How fast can a locksmith reach Heathrow or Colonial TownPark in Lake Mary?",
+        a: "Our average arrival time in Lake Mary is 20–30 minutes, including the Heathrow business park, Colonial TownPark retail district, and residential areas like Timacuan. We operate 24/7 including nights and weekends.",
+      },
+      {
+        q: "Do you provide commercial locksmith service to offices in the Heathrow business park?",
+        a: "Yes. We provide full commercial locksmith services to offices in Heathrow and along the Lake Mary Tech Corridor — including master key systems, access control installation, commercial lockouts, and lock hardware upgrades. Same-day service available.",
+      },
+      {
+        q: "How much does a locksmith cost in Lake Mary, FL?",
+        a: "Locksmith services in Lake Mary start at $45 for emergency lockouts. Lock rekeying starts at $25 per lock. Car key programming starts at $85. We provide upfront pricing with no hidden fees for all Lake Mary customers.",
+      },
+      {
+        q: "What areas near Lake Mary do you serve?",
+        a: "We serve Lake Mary and surrounding Seminole County areas including Heathrow, Longwood, Sanford, Altamonte Springs, Casselberry, and Maitland — all with the same fast response and upfront pricing.",
+      },
+    ],
+  },
+  "orlando": {
+    intro: `Affordable Locksmith Orlando is Orlando's most affordable licensed locksmith — serving all Orlando ZIP codes 24/7 with transparent, upfront pricing. Whether you're in Dr. Phillips, Lake Nona, College Park, Audubon Park, or Downtown Orlando, we provide fast, licensed locksmith services starting at just $45.`,
+    neighborhoods: `We serve all Orlando neighborhoods including Dr. Phillips, Lake Nona, College Park, Audubon Park, Thornton Park, Mills 50, Parramore, Milk District, Baldwin Park, Waterford Lakes, and every ZIP code in between. Our mobile units cover all 32XXX ZIP codes for 20–30 minute response times.`,
+    faqs: [
+      {
+        q: "What is the most affordable locksmith in Orlando?",
+        a: "Affordable Locksmith Orlando offers the lowest prices among licensed locksmiths in the area — starting at $45 for lockouts, $25/lock for rekeying, and $85 for car key programming. We provide upfront pricing with no hidden service call fees. All prices quoted before work begins.",
+      },
+      {
+        q: "Is there a locksmith available 24/7 in Orlando, FL?",
+        a: "Yes. We're available 24 hours a day, 7 days a week, 365 days a year throughout all Orlando ZIP codes. No extra charge for nights, weekends, or holidays. Average arrival time is 20–30 minutes.",
+      },
+      {
+        q: "How much does an emergency lockout cost in Orlando?",
+        a: "Emergency lockout service in Orlando starts at $45. The exact price depends on lock type, but you'll always receive an upfront quote before any work begins. We do not charge extra for nights or weekends.",
+      },
+      {
+        q: "Are you cheaper than a dealership for car keys in Orlando?",
+        a: "Yes — typically 40–60% cheaper. Dealerships often charge $200–$500+ for transponder key programming. Our mobile automotive locksmiths charge $85–$200 depending on the vehicle make and model, with no towing required.",
+      },
+    ],
+  },
+  "kissimmee": {
+    intro: `Affordable Locksmith Orlando provides fast, professional locksmith services throughout Kissimmee, FL (ZIP 34741) — including the I-4 tourism corridor, Celebration, Poinciana, and vacation rental communities near Walt Disney World. We serve Kissimmee residents, property managers, vacation rental owners, and businesses 24/7 with 20–30 minute response times.`,
+    neighborhoods: `We cover all Kissimmee areas: the tourist corridor along US-192 and US-441, Celebration, Poinciana, Buenaventura Lakes, Osceola Parkway corridor, and vacation rental communities near Disney World and Universal. We understand the unique needs of vacation rental operators and property managers in Osceola County.`,
+    faqs: [
+      {
+        q: "Do you provide locksmith service for vacation rentals in Kissimmee?",
+        a: "Yes. We specialize in vacation rental locksmith services including emergency lockouts, smart lock installation and programming, lock rekeying between guests, and master key systems for property managers. Available 24/7 to handle guest lockouts at any hour.",
+      },
+      {
+        q: "How fast can a locksmith arrive near Disney World or the tourist corridor in Kissimmee?",
+        a: "We typically arrive within 20–30 minutes throughout the Kissimmee tourist corridor including US-192, US-441, and vacation rental communities near Walt Disney World. Available 24/7 for tourist and guest emergencies.",
+      },
+      {
+        q: "Can you rekey locks for a vacation rental property in Kissimmee?",
+        a: "Yes. We rekey vacation rental properties and install smart locks that allow remote access code management — ideal for Kissimmee vacation rental operators. This eliminates the need to physically hand over keys between guests.",
+      },
+      {
+        q: "How much does a locksmith cost in Kissimmee?",
+        a: "Locksmith services in Kissimmee start at $45 for emergency lockouts. Lock rekeying starts at $25 per lock. Smart lock installation starts at $55 (labor). Upfront pricing with no hidden fees for all Kissimmee and Osceola County customers.",
+      },
+    ],
+  },
+  "winter-park": {
+    intro: `Affordable Locksmith Orlando provides premium locksmith services to Winter Park, FL (ZIP 32789) — serving Park Avenue's historic district, Rollins College area, and Winter Park's upscale residential communities. Our licensed locksmiths are experienced with high-security lock brands and smart home systems favored in the Winter Park area.`,
+    neighborhoods: `We serve all Winter Park neighborhoods including the Park Avenue corridor, Rollins College area, Via Tuscany, Windsong, Alaqua Lakes, Genius Drive, and surrounding Orange County communities. Our technicians are familiar with the historic homes, custom doors, and high-security hardware common in Winter Park.`,
+    faqs: [
+      {
+        q: "Do you service high-security locks and smart locks in Winter Park?",
+        a: "Yes. We install and service high-security locks from Medeco, Mul-T-Lock, Baldwin, and Schlage — as well as smart lock systems from August, Yale, Kwikset Halo, and Google Nest. We're experienced with the premium lock hardware common in Winter Park homes.",
+      },
+      {
+        q: "Can you work on historic or custom doors in Winter Park?",
+        a: "Yes. Our locksmiths are experienced with older mortise locks, European-style locks, and custom hardware found in Winter Park's historic homes and estates. We assess the right approach before any work begins to preserve your doors.",
+      },
+      {
+        q: "How much does a locksmith cost in Winter Park?",
+        a: "Locksmith services in Winter Park start at $45 for emergency lockouts. Lock rekeying starts at $25 per lock. High-security lock installation and smart lock setup costs vary by brand and complexity. Upfront pricing always provided before work begins.",
+      },
+      {
+        q: "Do you provide locksmith service near Park Avenue in Winter Park?",
+        a: "Yes. We serve Park Avenue, the historic district, and all Winter Park ZIP codes (32789, 32792). Our average arrival time in Winter Park is 20–30 minutes. Available 24/7 including nights and weekends.",
+      },
+    ],
+  },
+};
