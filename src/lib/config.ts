@@ -2,8 +2,8 @@ export const SITE_CONFIG = {
   name: "Affordable Locksmith Orlando",
   shortName: "Affordable Locksmith",
   tagline: "Fast, Affordable & Trusted Locksmith in Orlando, FL",
-  phone: "(407) 555-0199",
-  phoneRaw: "4075550199",
+  phone: "(855) 633-0750",
+  phoneRaw: "18556330750",
   email: "info@affordablelocksmithorlando.com",
   address: {
     street: "7721 Newlan Dr",
