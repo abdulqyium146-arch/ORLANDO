@@ -397,6 +397,28 @@ export const LOCATION_CONTENT: Partial<Record<string, {
       },
     ],
   },
+  "altamonte-springs": {
+    intro: `Affordable Locksmith Orlando provides fast, licensed locksmith service throughout Altamonte Springs, FL (ZIP 32701 & 32714, Seminole County) — available 24/7 with a 20–30 minute average response time. From emergency lockouts near Cranes Roost Park to commercial security upgrades along the SR 434 corridor, we serve every Altamonte Springs neighborhood with upfront pricing starting at $45.`,
+    neighborhoods: `We cover all Altamonte Springs areas including Cranes Roost, Forest City, Spring Lake, Sanlando Springs, the Altamonte Mall corridor, AdventHealth campus, SunRail station area, and all residential streets along SR 434, SR 436, and US-17/92. See our <a href="/altamonte-springs-locksmith">dedicated Altamonte Springs locksmith service page</a> for full details.`,
+    faqs: [
+      {
+        q: "What locksmith services are available in Altamonte Springs, FL?",
+        a: "Affordable Locksmith Orlando provides complete locksmith services in Altamonte Springs including 24/7 emergency lockouts, lock rekeying, deadbolt installation, smart lock setup, car key programming, safe opening, and commercial security — available across ZIP codes 32701 and 32714 with 20–30 minute response.",
+      },
+      {
+        q: "How fast can a locksmith arrive in Altamonte Springs?",
+        a: "Our average response time in Altamonte Springs is 20–30 minutes. We have mobile units positioned throughout Seminole County for rapid dispatch to Cranes Roost, Forest City, Spring Lake, and the SR 434 and SR 436 corridors.",
+      },
+      {
+        q: "How much does locksmith service cost in Altamonte Springs?",
+        a: "Locksmith service in Altamonte Springs starts at $45 for emergency lockouts. Lock rekeying from $25/lock. Car key programming from $85. All prices quoted upfront — no hidden service call fees.",
+      },
+      {
+        q: "Are you licensed to provide locksmith service in Altamonte Springs?",
+        a: "Yes. Affordable Locksmith Orlando holds Florida State Locksmith License FL-LIC-2024-LOCK and is fully insured. All technicians are background-checked and ALOA certified, authorized to serve all of Seminole County including Altamonte Springs.",
+      },
+    ],
+  },
   "winter-park": {
     intro: `Affordable Locksmith Orlando provides premium locksmith services to Winter Park, FL (ZIP 32789) — serving Park Avenue's historic district, Rollins College area, and Winter Park's upscale residential communities. Our licensed locksmiths are experienced with high-security lock brands and smart home systems favored in the Winter Park area.`,
     neighborhoods: `We serve all Winter Park neighborhoods including the Park Avenue corridor, Rollins College area, Via Tuscany, Windsong, Alaqua Lakes, Genius Drive, and surrounding Orange County communities. Our technicians are familiar with the historic homes, custom doors, and high-security hardware common in Winter Park.`,
