@@ -139,6 +139,232 @@ export default function AltamonteSpringsLocksmithPage() {
     ],
   };
 
+  /* ── OfferCatalog: each service as a priced Offer entity ── */
+  const offerCatalogSchema = {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "@id": `${PAGE_URL}#offercatalog`,
+    name: "Locksmith Services — Altamonte Springs, FL Price List",
+    provider: { "@id": `${SITE_CONFIG.url}/#business` },
+    areaServed: {
+      "@type": "City",
+      name: "Altamonte Springs",
+      containedInPlace: { "@type": "AdministrativeArea", name: "Seminole County", containedInPlace: { "@type": "State", name: "Florida" } },
+    },
+    itemListElement: PRICING_ROWS.map((row, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Offer",
+        "@id": `${PAGE_URL}#offer-${i + 1}`,
+        name: `${row.service} — Altamonte Springs, FL`,
+        url: `${SITE_CONFIG.url}${row.href}`,
+        price: row.price.replace(/[^0-9.]/g, ""),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        areaServed: { "@type": "City", name: "Altamonte Springs" },
+        seller: { "@id": `${SITE_CONFIG.url}/#business` },
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${PAGE_URL}#service-${i + 1}`,
+          name: `${row.service} in Altamonte Springs, FL`,
+          provider: { "@id": `${SITE_CONFIG.url}/#business` },
+          areaServed: { "@type": "City", name: "Altamonte Springs" },
+        },
+      },
+    })),
+  };
+
+  /* ── ImageObject: hero photo with attribution ── */
+  const imageObjectSchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "@id": `${PAGE_URL}#heroimage`,
+    url: `${SITE_CONFIG.url}/professional-locksmith-orlando.webp`,
+    contentUrl: `${SITE_CONFIG.url}/professional-locksmith-orlando.webp`,
+    width: 800,
+    height: 600,
+    name: "Licensed Locksmith Service — Altamonte Springs, FL",
+    description: `${AUTHOR.name}, ${AUTHOR.jobTitle} — professional locksmith service in Altamonte Springs, FL (Seminole County, ZIP 32701)`,
+    caption: `${SITE_CONFIG.name} — Licensed Locksmith Service in Altamonte Springs, FL`,
+    representativeOfPage: true,
+    inLanguage: "en-US",
+    creator: { "@id": `${SITE_CONFIG.url}/#author` },
+    copyrightHolder: { "@id": `${SITE_CONFIG.url}/#organization` },
+    acquireLicensePage: SITE_CONFIG.url,
+  };
+
+  /* ── EmergencyService: type disambiguation for 24/7 lockout calls ── */
+  const emergencyServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": ["EmergencyService", "LocalBusiness", "Locksmith"],
+    "@id": `${PAGE_URL}#emergency`,
+    name: `${SITE_CONFIG.name} — 24/7 Emergency Locksmith Altamonte Springs`,
+    description: "24/7 emergency locksmith service in Altamonte Springs, FL. Residential, commercial, and automotive lockouts resolved in 20–30 minutes.",
+    telephone: SITE_CONFIG.phone,
+    url: PAGE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Altamonte Springs",
+      addressRegion: "FL",
+      postalCode: "32701",
+      addressCountry: "US",
+    },
+    openingHours: "Mo-Su 00:00-24:00",
+    areaServed: [
+      { "@type": "City", name: "Altamonte Springs", containedInPlace: { "@type": "AdministrativeArea", name: "Seminole County" } },
+      { "@type": "City", name: "Casselberry" },
+      { "@type": "City", name: "Longwood" },
+      { "@type": "City", name: "Maitland" },
+      { "@type": "City", name: "Apopka" },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SITE_CONFIG.phone,
+      contactType: "emergency",
+      contactOption: "TollFree",
+      areaServed: "US-FL",
+      availableLanguage: "English",
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        opens: "00:00",
+        closes: "23:59",
+      },
+    },
+    parentOrganization: { "@id": `${SITE_CONFIG.url}/#business` },
+  };
+
+  /* ── ItemList: all services in Altamonte Springs (Sitelinks signal) ── */
+  const serviceItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${PAGE_URL}#servicelist`,
+    name: "Locksmith Services in Altamonte Springs, FL",
+    description: "Complete list of professional locksmith services available in Altamonte Springs, FL (Seminole County)",
+    numberOfItems: SERVICES.length,
+    itemListElement: SERVICES.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${s.name} in Altamonte Springs, FL`,
+      url: `${SITE_CONFIG.url}/locations/${SLUG}/${s.slug}`,
+      item: {
+        "@type": "Service",
+        "@id": `${SITE_CONFIG.url}/locations/${SLUG}/${s.slug}#service`,
+        name: `${s.name} — Altamonte Springs, FL`,
+        description: s.description,
+        provider: { "@id": `${SITE_CONFIG.url}/#business` },
+        areaServed: { "@type": "City", name: "Altamonte Springs" },
+        offers: {
+          "@type": "Offer",
+          price: s.price.replace(/[^0-9.]/g, ""),
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        },
+      },
+    })),
+  };
+
+  /* ── AggregateRating + Review entities ── */
+  const reviewEntitySchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${PAGE_URL}#ratingsummary`,
+    name: SITE_CONFIG.name,
+    url: PAGE_URL,
+    telephone: SITE_CONFIG.phone,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: SITE_CONFIG.rating,
+      reviewCount: SITE_CONFIG.reviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: REVIEWS.slice(0, 3).map((r) => ({
+      "@type": "Review",
+      "@id": `${PAGE_URL}#review-${r.id}`,
+      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+      author: { "@type": "Person", name: r.name },
+      reviewBody: r.text,
+      datePublished: r.isoDate,
+    })),
+  };
+
+  /* ── Credentials: Person + GovernmentOrganization + Certification body ── */
+  const credentialEntitySchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_CONFIG.url}/#author`,
+    name: AUTHOR.name,
+    jobTitle: AUTHOR.jobTitle,
+    worksFor: { "@id": `${SITE_CONFIG.url}/#business` },
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "@id": `${SITE_CONFIG.url}/#credential-fl-license`,
+        credentialCategory: "license",
+        name: "Florida State Locksmith License",
+        identifier: SITE_CONFIG.licenseNumber,
+        recognizedBy: {
+          "@type": "GovernmentOrganization",
+          "@id": "https://www.fdacs.gov",
+          name: "Florida Department of Agriculture and Consumer Services",
+          alternateName: "FDACS",
+          url: "https://www.fdacs.gov",
+        },
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "@id": `${SITE_CONFIG.url}/#credential-aloa`,
+        credentialCategory: "certification",
+        name: "ALOA Certified Registered Locksmith",
+        alternateName: "CRL",
+        recognizedBy: {
+          "@type": "Organization",
+          "@id": "https://www.aloa.org",
+          name: "Associated Locksmiths of America",
+          alternateName: "ALOA",
+          url: "https://www.aloa.org",
+        },
+      },
+    ],
+  };
+
+  /* ── Place entities: city + landmarks (geo disambiguation) ── */
+  const placeEntitySchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${PAGE_URL}#coverage`,
+    name: "Locksmith Service Coverage — Altamonte Springs, FL",
+    provider: { "@id": `${SITE_CONFIG.url}/#business` },
+    areaServed: {
+      "@type": "City",
+      "@id": `https://www.wikidata.org/wiki/Altamonte_Springs,_Florida`,
+      name: "Altamonte Springs",
+      alternateName: ["Altamonte Springs FL", "Altamonte Springs Florida"],
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Seminole County",
+        containedInPlace: { "@type": "State", name: "Florida", identifier: "FL" },
+      },
+      geo: { "@type": "GeoCoordinates", latitude: 28.6614, longitude: -81.3656 },
+      hasMap: "https://www.google.com/maps/place/Altamonte+Springs,+FL",
+    },
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: { "@type": "GeoCoordinates", latitude: 28.6614, longitude: -81.3656 },
+      geoRadius: "15000",
+    },
+    knowsAbout: [
+      "Cranes Roost Park, Altamonte Springs FL",
+      "Altamonte Mall, 451 E Altamonte Dr, Altamonte Springs FL 32701",
+      "AdventHealth Altamonte Springs, 601 E Altamonte Dr, Altamonte Springs FL 32701",
+      "SunRail Altamonte Springs Station, Altamonte Springs FL 32701",
+      "SR 434 Corridor, Altamonte Springs FL",
+      "SR 436 Corridor, Altamonte Springs FL",
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }} />
@@ -146,6 +372,13 @@ export default function AltamonteSpringsLocksmithPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObjectSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(emergencyServiceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceItemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewEntitySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(credentialEntitySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeEntitySchema) }} />
 
       {/* ── HERO ── */}
       <section className="hero-gradient text-white relative overflow-hidden" aria-label="Hero">
@@ -594,6 +827,54 @@ export default function AltamonteSpringsLocksmithPage() {
             <Link href="/faq" className="inline-flex items-center gap-2 text-[#1e3a5f] font-bold hover:underline text-sm">
               View All FAQs <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LICENSE & AUTHORITY (Entity signals for Knowledge Panel + AIO) ── */}
+      <section className="py-12 px-4 bg-[#1e3a5f] text-white" aria-labelledby="authority-heading">
+        <div className="max-w-5xl mx-auto">
+          <h2 id="authority-heading" className="text-xl font-bold mb-6 speakable">
+            Licensed &amp; Verified — Locksmith Service Authority in Altamonte Springs
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {[
+              { label: "Florida State License", value: SITE_CONFIG.licenseNumber, sub: "Issued by FDACS", href: "https://www.fdacs.gov" },
+              { label: "Professional Certification", value: "ALOA CRL", sub: "Associated Locksmiths of America", href: "https://www.aloa.org" },
+              { label: "Service ZIP Codes", value: "32701 & 32714", sub: "Altamonte Springs, Seminole County FL", href: null },
+              { label: "In Business Since", value: SITE_CONFIG.founded, sub: `${new Date().getFullYear() - parseInt(SITE_CONFIG.founded)}+ years serving Central FL`, href: null },
+            ].map((item) => (
+              <div key={item.label} className="bg-white/10 rounded-xl p-4">
+                <p className="text-xs text-gray-400 mb-0.5 uppercase tracking-wide">{item.label}</p>
+                <p className="font-bold text-[#f59e0b] text-sm mt-1">{item.value}</p>
+                {item.href ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-300 text-xs hover:text-white transition-colors">{item.sub} ↗</a>
+                ) : (
+                  <p className="text-gray-300 text-xs">{item.sub}</p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Landmarks with addresses — explicit Place entity signals */}
+          <h3 className="font-semibold text-white text-sm mb-3">Key Landmarks &amp; Addresses We Serve in Altamonte Springs</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              { name: "Cranes Roost Park", address: "274 Cranes Roost Blvd, Altamonte Springs, FL 32701" },
+              { name: "Altamonte Mall", address: "451 E Altamonte Dr, Altamonte Springs, FL 32701" },
+              { name: "AdventHealth Altamonte Springs", address: "601 E Altamonte Dr, Altamonte Springs, FL 32701" },
+              { name: "SunRail Altamonte Springs Station", address: "Altamonte Springs, FL 32701 (SR 436 @ E Central Pkwy)" },
+              { name: "SR 434 Corridor", address: "State Road 434, Altamonte Springs, FL 32701–32714" },
+              { name: "SR 436 / Semoran Blvd", address: "State Road 436, Altamonte Springs, FL 32701" },
+            ].map((place) => (
+              <div key={place.name} className="flex items-start gap-2 bg-white/5 rounded-lg px-3 py-2.5">
+                <MapPin className="h-3.5 w-3.5 text-[#f59e0b] shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <p className="text-white text-xs font-semibold">{place.name}</p>
+                  <p className="text-gray-400 text-xs">{place.address}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
