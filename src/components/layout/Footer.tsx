@@ -163,6 +163,7 @@ export default function Footer() {
                 { label: "Home", href: "/" },
                 { label: "All Services", href: "/services" },
                 { label: "Service Areas", href: "/locations" },
+                { label: "Altamonte Springs Locksmith", href: "/altamonte-springs-locksmith" },
                 { label: "Customer Reviews", href: "/reviews" },
                 { label: "FAQ", href: "/faq" },
                 { label: `About ${AUTHOR.name}`, href: "/about" },

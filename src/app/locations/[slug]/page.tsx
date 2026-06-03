@@ -184,6 +184,21 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
+      {/* Dedicated page CTA — Altamonte Springs only */}
+      {slug === "altamonte-springs" && (
+        <div className="bg-[#f59e0b]/10 border-b border-[#f59e0b]/30 py-3 px-4">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-sm text-gray-700">
+              <strong className="text-[#1e3a5f]">Altamonte Springs residents:</strong>{" "}
+              See our comprehensive page with full pricing, landmarks coverage, FAQ &amp; schemas.
+            </p>
+            <Link href="/altamonte-springs-locksmith" className="shrink-0 text-sm font-bold text-[#1e3a5f] bg-[#f59e0b] hover:bg-[#d97706] px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+              View Dedicated Page →
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Services Available — all 10 with city×service links */}
       <section className="py-14 px-4" aria-labelledby="local-services-heading">
         <div className="max-w-7xl mx-auto">

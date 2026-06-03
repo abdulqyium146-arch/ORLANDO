@@ -6,7 +6,7 @@ import {
   Shield, BadgeCheck, AlertTriangle, Building2, Home, Car,
   KeyRound, RefreshCw, Wrench, ArrowRight, DollarSign,
 } from "lucide-react";
-import { SITE_CONFIG, AUTHOR, SERVICES, REVIEWS } from "@/lib/config";
+import { SITE_CONFIG, AUTHOR, SERVICES, REVIEWS, SERVICE_AREAS } from "@/lib/config";
 import {
   generateLocationSchema,
   generateFAQSchema,
@@ -953,6 +953,117 @@ export default function AltamonteSpringsLocksmithPage() {
                 {s.name}
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEGA INTERNAL LINK MATRIX (fast indexing / crawl depth) ── */}
+      <section className="py-12 px-4 bg-gray-50 border-t border-gray-200" aria-label="Complete site index">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Core pages */}
+          <div className="mb-8">
+            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Quick Navigation</h2>
+            <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+              {[
+                { label: "Home", href: "/" },
+                { label: "All Services", href: "/services" },
+                { label: "All Locations", href: "/locations" },
+                { label: "Altamonte Springs Hub", href: `/locations/${SLUG}` },
+                { label: "Customer Reviews", href: "/reviews" },
+                { label: "FAQ", href: "/faq" },
+                { label: "About Us", href: "/about" },
+                { label: "Contact", href: "/contact" },
+                { label: "Sitemap", href: "/sitemap.xml" },
+              ].map((link) => (
+                <Link key={link.href} href={link.href} className="text-xs text-[#1e3a5f] hover:underline font-medium">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Altamonte Springs — all services */}
+          <div className="mb-8">
+            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+              Altamonte Springs — All Locksmith Services
+            </h2>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              {SERVICES.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/locations/${SLUG}/${s.slug}`}
+                  className="text-xs text-gray-600 hover:text-[#1e3a5f] hover:underline"
+                >
+                  {s.name} — Altamonte Springs
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* All service hub pages */}
+          <div className="mb-8">
+            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">All Service Pages</h2>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              <Link href="/services" className="text-xs text-gray-600 hover:text-[#1e3a5f] hover:underline">All Services</Link>
+              {SERVICES.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className="text-xs text-gray-600 hover:text-[#1e3a5f] hover:underline"
+                >
+                  {s.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* All location hub pages */}
+          <div className="mb-10">
+            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">All Location Pages</h2>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+              <Link href="/locations" className="text-xs text-gray-600 hover:text-[#1e3a5f] hover:underline">All Locations</Link>
+              {SERVICE_AREAS.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/locations/${area.slug}`}
+                  className="text-xs text-gray-600 hover:text-[#1e3a5f] hover:underline"
+                >
+                  {area.name}, FL
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Full City × Service matrix */}
+          <div>
+            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+              Locksmith Services by City — Complete Index
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+              {SERVICE_AREAS.map((area) => (
+                <div key={area.slug}>
+                  <Link
+                    href={`/locations/${area.slug}`}
+                    className="block text-[#1e3a5f] font-bold text-xs mb-1.5 hover:underline"
+                  >
+                    {area.name}, FL
+                  </Link>
+                  <ul className="space-y-0.5">
+                    {SERVICES.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          href={`/locations/${area.slug}/${s.slug}`}
+                          className="text-gray-500 hover:text-[#1e3a5f] text-xs leading-snug hover:underline"
+                        >
+                          {s.shortName}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

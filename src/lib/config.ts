@@ -399,7 +399,7 @@ export const LOCATION_CONTENT: Partial<Record<string, {
   },
   "altamonte-springs": {
     intro: `Affordable Locksmith Orlando provides fast, licensed locksmith service throughout Altamonte Springs, FL (ZIP 32701 & 32714, Seminole County) — available 24/7 with a 20–30 minute average response time. From emergency lockouts near Cranes Roost Park to commercial security upgrades along the SR 434 corridor, we serve every Altamonte Springs neighborhood with upfront pricing starting at $45.`,
-    neighborhoods: `We cover all Altamonte Springs areas including Cranes Roost, Forest City, Spring Lake, Sanlando Springs, the Altamonte Mall corridor, AdventHealth campus, SunRail station area, and all residential streets along SR 434, SR 436, and US-17/92. See our <a href="/altamonte-springs-locksmith">dedicated Altamonte Springs locksmith service page</a> for full details.`,
+    neighborhoods: `We cover all Altamonte Springs areas including Cranes Roost, Forest City, Spring Lake, Sanlando Springs, the Altamonte Mall corridor, AdventHealth Altamonte Springs campus, SunRail station area, and all residential streets along SR 434, SR 436, and US-17/92. ZIP codes served: 32701 and 32714.`,
     faqs: [
       {
         q: "What locksmith services are available in Altamonte Springs, FL?",
