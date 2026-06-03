@@ -419,6 +419,28 @@ export const LOCATION_CONTENT: Partial<Record<string, {
       },
     ],
   },
+  "casselberry": {
+    intro: `Affordable Locksmith Orlando provides fast, licensed locksmith service throughout Casselberry, FL (ZIP 32707 & 32730, Seminole County) — including the US-17/92 business corridor, SR 436 (Semoran Blvd), and SR 434. Available 24/7 with a 20–30 minute average response time, our mobile units cover every Casselberry neighborhood from Lake Concord to the Fern Park corridor with upfront pricing starting at $45.`,
+    neighborhoods: `We cover all Casselberry areas including the US-17/92 (South US Hwy 17-92) business corridor near Shoot Straight, Lake Concord, South Casselberry, North Casselberry, SR 436 (Semoran Blvd) corridor, SR 434 corridor, Fern Park area, Greenway Square, and all residential streets. ZIP codes served: 32707 and 32730.`,
+    faqs: [
+      {
+        q: "What locksmith services are available in Casselberry, FL?",
+        a: "Affordable Locksmith Orlando provides complete locksmith services in Casselberry, FL including 24/7 emergency lockouts, lock rekeying, deadbolt installation, car key programming, transponder key service, smart lock setup, safe opening, and commercial security — all across ZIP codes 32707 and 32730 with 20–30 minute response times.",
+      },
+      {
+        q: "Is there a locksmith on US-17/92 in Casselberry, FL?",
+        a: "Yes. Affordable Locksmith Orlando provides fully mobile locksmith service along the entire US-17/92 corridor in Casselberry, including the area near Shoot Straight (5051 S US Hwy 17-92) and the SR 436 intersection. Average arrival time on US-17/92 in Casselberry is 20–30 minutes, available 24/7.",
+      },
+      {
+        q: "How much does a locksmith cost in Casselberry?",
+        a: "Locksmith services in Casselberry start at $45 for emergency lockouts. Lock rekeying starts at $25 per lock. Transponder key programming from $85. Car key replacement from $95. We provide upfront pricing with no hidden fees for all Casselberry customers.",
+      },
+      {
+        q: "Do you provide automotive and transponder key service in Casselberry?",
+        a: "Yes. We provide automotive locksmith services throughout Casselberry including car lockouts, transponder key programming, car key replacement, and remote fob programming for all vehicle makes and models — with 20–30 minute response on US-17/92, SR 436, and SR 434.",
+      },
+    ],
+  },
   "winter-park": {
     intro: `Affordable Locksmith Orlando provides premium locksmith services to Winter Park, FL (ZIP 32789) — serving Park Avenue's historic district, Rollins College area, and Winter Park's upscale residential communities. Our licensed locksmiths are experienced with high-security lock brands and smart home systems favored in the Winter Park area.`,
     neighborhoods: `We serve all Winter Park neighborhoods including the Park Avenue corridor, Rollins College area, Via Tuscany, Windsong, Alaqua Lakes, Genius Drive, and surrounding Orange County communities. Our technicians are familiar with the historic homes, custom doors, and high-security hardware common in Winter Park.`,

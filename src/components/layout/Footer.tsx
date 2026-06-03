@@ -164,6 +164,7 @@ export default function Footer() {
                 { label: "All Services", href: "/services" },
                 { label: "Service Areas", href: "/locations" },
                 { label: "Altamonte Springs Locksmith", href: "/altamonte-springs-locksmith" },
+                { label: "Casselberry Locksmith", href: "/casselberry-locksmith" },
                 { label: "Customer Reviews", href: "/reviews" },
                 { label: "FAQ", href: "/faq" },
                 { label: `About ${AUTHOR.name}`, href: "/about" },

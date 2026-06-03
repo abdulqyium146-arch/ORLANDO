@@ -56,13 +56,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const pageUrl = `${SITE_CONFIG.url}/locations/${slug}`;
   const isLakeMary = slug === "lake-mary";
+  const isCasselberry = slug === "casselberry";
 
   const title = isLakeMary
     ? `Locksmith Lake Mary FL | Seminole County 24/7 Emergency`
+    : isCasselberry
+    ? `Locksmith Casselberry FL | US-17/92 & SR 436 24/7 Service`
     : `Locksmith ${area.name} FL | 24/7 Emergency Locksmith`;
 
   const description = isLakeMary
     ? `Professional locksmith in Lake Mary, FL (Seminole County). Serving Heathrow, Colonial TownPark & Timacuan. Emergency lockouts, rekeying & car keys. Call ${SITE_CONFIG.phone}`
+    : isCasselberry
+    ? `Professional locksmith in Casselberry, FL (Seminole County). Mobile service on US-17/92, SR 436 & SR 434. Emergency lockouts, rekeying, transponder keys. 20–30 min 24/7. Call ${SITE_CONFIG.phone}`
     : `Professional locksmith services in ${area.name}, FL. Emergency lockouts, lock rekeying, car keys & more. Available 24/7. Fast 20–30 min response. Call ${SITE_CONFIG.phone}`;
 
   return {
@@ -77,6 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       `locksmith near me ${area.name}`,
       `24 hour locksmith ${area.name}`,
       ...(isLakeMary ? ["locksmith seminole county", "heathrow locksmith", "lake mary fl locksmith"] : []),
+      ...(isCasselberry ? ["locksmith casselberry fl", "locksmith casselberry florida", "locksmith casselberry fl 17 92", "locksmith on 17-92 in casselberry", "automotive locksmith casselberry", "locksmith services casselberry fl"] : []),
     ],
     openGraph: {
       type: "website",
@@ -184,7 +190,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* Dedicated page CTA — Altamonte Springs only */}
+      {/* Dedicated page CTA — Altamonte Springs */}
       {slug === "altamonte-springs" && (
         <div className="bg-[#f59e0b]/10 border-b border-[#f59e0b]/30 py-3 px-4">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -193,6 +199,21 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               See our comprehensive page with full pricing, landmarks coverage, FAQ &amp; schemas.
             </p>
             <Link href="/altamonte-springs-locksmith" className="shrink-0 text-sm font-bold text-[#1e3a5f] bg-[#f59e0b] hover:bg-[#d97706] px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+              View Dedicated Page →
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Dedicated page CTA — Casselberry */}
+      {slug === "casselberry" && (
+        <div className="bg-[#f59e0b]/10 border-b border-[#f59e0b]/30 py-3 px-4">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-sm text-gray-700">
+              <strong className="text-[#1e3a5f]">Casselberry residents:</strong>{" "}
+              See our full page with US-17/92 coverage, pricing, landmarks, transponder service &amp; more.
+            </p>
+            <Link href="/casselberry-locksmith" className="shrink-0 text-sm font-bold text-[#1e3a5f] bg-[#f59e0b] hover:bg-[#d97706] px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
               View Dedicated Page →
             </Link>
           </div>
