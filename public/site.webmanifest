@@ -1,11 +1,15 @@
 {
   "name": "Affordable Locksmith Orlando",
   "short_name": "Locksmith Orlando",
-  "description": "24/7 Emergency Locksmith in Orlando, FL. Licensed & insured. Fast 20-30 min response.",
+  "description": "24/7 licensed locksmith in Orlando, FL. Emergency lockouts, rekeying, car keys & more. Call (855) 633-0750.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#1e3a5f",
+  "orientation": "portrait",
   "theme_color": "#1e3a5f",
+  "background_color": "#1e3a5f",
+  "lang": "en-US",
+  "categories": ["services", "utilities"],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -18,6 +22,18 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Now — 24/7 Emergency",
+      "url": "tel:18556330750",
+      "description": "Call Affordable Locksmith Orlando for immediate service"
+    },
+    {
+      "name": "Request Service Online",
+      "url": "/contact",
+      "description": "Submit a locksmith service request online"
     }
   ]
 }
